@@ -1,0 +1,2205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>欢欢制卡站</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/css/style.css?v=__APP_VERSION__">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap"></noscript>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <script src="https://unpkg.com/marked@15.0.0/marked.min.js"></script>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+<symbol id="lucide-sparkles" viewBox="0 0 24 24"><!-- @license lucide-static v0.577.0 - ISC -->
+
+  <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" />
+  <path d="M20 2v4" />
+  <path d="M22 4h-4" />
+  <circle cx="4" cy="20" r="2" /></symbol>
+<symbol id="lucide-palette" viewBox="0 0 24 24"><!-- @license lucide-static v0.577.0 - ISC -->
+
+  <path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z" />
+  <circle cx="13.5" cy="6.5" r=".5" fill="currentColor" />
+  <circle cx="17.5" cy="10.5" r=".5" fill="currentColor" />
+  <circle cx="6.5" cy="12.5" r=".5" fill="currentColor" />
+  <circle cx="8.5" cy="7.5" r=".5" fill="currentColor" /></symbol>
+<symbol id="lucide-package" viewBox="0 0 24 24"><!-- @license lucide-static v0.577.0 - ISC -->
+
+  <path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z" />
+  <path d="M12 22V12" />
+  <polyline points="3.29 7 12 12 20.71 7" />
+  <path d="m7.5 4.27 9 5.15" /></symbol>
+<symbol id="lucide-book-open" viewBox="0 0 24 24"><!-- @license lucide-static v0.577.0 - ISC -->
+
+  <path d="M12 7v14" />
+  <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z" /></symbol>
+<symbol id="lucide-settings" viewBox="0 0 24 24"><!-- @license lucide-static v0.577.0 - ISC -->
+
+  <path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" />
+  <circle cx="12" cy="12" r="3" /></symbol>
+<symbol id="lucide-message-circle" viewBox="0 0 24 24"><!-- @license lucide-static v0.577.0 - ISC -->
+
+  <path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719" /></symbol>
+<symbol id="lucide-clipboard-list" viewBox="0 0 24 24"><!-- @license lucide-static v0.577.0 - ISC -->
+
+  <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+  <path d="M12 11h4" />
+  <path d="M12 16h4" />
+  <path d="M8 11h.01" />
+  <path d="M8 16h.01" /></symbol>
+<symbol id="lucide-upload" viewBox="0 0 24 24"><!-- @license lucide-static v0.577.0 - ISC -->
+
+  <path d="M12 3v12" />
+  <path d="m17 8-5-5-5 5" />
+  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /></symbol>
+<symbol id="lucide-key" viewBox="0 0 24 24"><!-- @license lucide-static v0.577.0 - ISC -->
+
+  <path d="m15.5 7.5 2.3 2.3a1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 0 0 0-1.4L19 4" />
+  <path d="m21 2-9.6 9.6" />
+  <circle cx="7.5" cy="15.5" r="5.5" /></symbol>
+<symbol id="lucide-list" viewBox="0 0 24 24"><!-- @license lucide-static v0.577.0 - ISC -->
+
+  <path d="M3 5h.01" />
+  <path d="M3 12h.01" />
+  <path d="M3 19h.01" />
+  <path d="M8 5h13" />
+  <path d="M8 12h13" />
+  <path d="M8 19h13" /></symbol>
+<symbol id="lucide-sliders-horizontal" viewBox="0 0 24 24"><!-- @license lucide-static v0.577.0 - ISC -->
+
+  <path d="M10 5H3" />
+  <path d="M12 19H3" />
+  <path d="M14 3v4" />
+  <path d="M16 17v4" />
+  <path d="M21 12h-9" />
+  <path d="M21 19h-5" />
+  <path d="M21 5h-7" />
+  <path d="M8 10v4" />
+  <path d="M8 12H3" /></symbol>
+<symbol id="lucide-drama" viewBox="0 0 24 24"><!-- @license lucide-static v0.577.0 - ISC -->
+
+  <path d="M10 11h.01" />
+  <path d="M14 6h.01" />
+  <path d="M18 6h.01" />
+  <path d="M6.5 13.1h.01" />
+  <path d="M22 5c0 9-4 12-6 12s-6-3-6-12c0-2 2-3 6-3s6 1 6 3" />
+  <path d="M17.4 9.9c-.8.8-2 .8-2.8 0" />
+  <path d="M10.1 7.1C9 7.2 7.7 7.7 6 8.6c-3.5 2-4.7 3.9-3.7 5.6 4.5 7.8 9.5 8.4 11.2 7.4.9-.5 1.9-2.1 1.9-4.7" />
+  <path d="M9.1 16.5c.3-1.1 1.4-1.7 2.4-1.4" /></symbol>
+<symbol id="lucide-pen-line" viewBox="0 0 24 24"><!-- @license lucide-static v0.577.0 - ISC -->
+
+  <path d="M13 21h8" />
+  <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" /></symbol>
+<symbol id="lucide-map-pin" viewBox="0 0 24 24"><!-- @license lucide-static v0.577.0 - ISC -->
+
+  <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+  <circle cx="12" cy="10" r="3" /></symbol>
+<symbol id="lucide-tag" viewBox="0 0 24 24"><!-- @license lucide-static v0.577.0 - ISC -->
+
+  <path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z" />
+  <circle cx="7.5" cy="7.5" r=".5" fill="currentColor" /></symbol>
+<symbol id="lucide-user" viewBox="0 0 24 24"><!-- @license lucide-static v0.577.0 - ISC -->
+
+  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+  <circle cx="12" cy="7" r="4" /></symbol>
+<symbol id="lucide-shirt" viewBox="0 0 24 24"><!-- @license lucide-static v0.577.0 - ISC -->
+
+  <path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z" /></symbol>
+<symbol id="lucide-heart" viewBox="0 0 24 24"><!-- @license lucide-static v0.577.0 - ISC -->
+
+  <path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" /></symbol>
+<symbol id="lucide-briefcase" viewBox="0 0 24 24"><!-- @license lucide-static v0.577.0 - ISC -->
+
+  <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+  <rect width="20" height="14" x="2" y="6" rx="2" /></symbol>
+<symbol id="lucide-users" viewBox="0 0 24 24"><!-- @license lucide-static v0.577.0 - ISC -->
+
+  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+  <path d="M16 3.128a4 4 0 0 1 0 7.744" />
+  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+  <circle cx="9" cy="7" r="4" /></symbol>
+<symbol id="lucide-target" viewBox="0 0 24 24"><!-- @license lucide-static v0.577.0 - ISC -->
+
+  <circle cx="12" cy="12" r="10" />
+  <circle cx="12" cy="12" r="6" />
+  <circle cx="12" cy="12" r="2" /></symbol>
+<symbol id="lucide-zap" viewBox="0 0 24 24"><!-- @license lucide-static v0.577.0 - ISC -->
+
+  <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" /></symbol>
+<symbol id="lucide-plus" viewBox="0 0 24 24"><!-- @license lucide-static v0.577.0 - ISC -->
+
+  <path d="M5 12h14" />
+  <path d="M12 5v14" /></symbol>
+<symbol id="lucide-globe" viewBox="0 0 24 24"><!-- @license lucide-static v0.577.0 - ISC -->
+
+  <circle cx="12" cy="12" r="10" />
+  <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+  <path d="M2 12h20" /></symbol>
+<symbol id="lucide-gamepad-2" viewBox="0 0 24 24"><!-- @license lucide-static v0.577.0 - ISC -->
+
+  <line x1="6" x2="10" y1="11" y2="11" />
+  <line x1="8" x2="8" y1="9" y2="13" />
+  <line x1="15" x2="15.01" y1="12" y2="12" />
+  <line x1="18" x2="18.01" y1="10" y2="10" />
+  <path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z" /></symbol>
+<symbol id="lucide-bar-chart-3" viewBox="0 0 24 24"><!-- @license lucide-static v0.577.0 - ISC -->
+
+  <path d="M3 3v16a2 2 0 0 0 2 2h16" />
+  <path d="M18 17V9" />
+  <path d="M13 17V5" />
+  <path d="M8 17v-3" /></symbol>
+<symbol id="lucide-trash-2" viewBox="0 0 24 24"><!-- @license lucide-static v0.577.0 - ISC -->
+
+  <path d="M10 11v6" />
+  <path d="M14 11v6" />
+  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
+  <path d="M3 6h18" />
+  <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /></symbol>
+<symbol id="lucide-paperclip" viewBox="0 0 24 24"><!-- @license lucide-static v0.577.0 - ISC -->
+
+  <path d="m16 6-8.414 8.586a2 2 0 0 0 2.829 2.829l8.414-8.586a4 4 0 1 0-5.657-5.657l-8.379 8.551a6 6 0 1 0 8.485 8.485l8.379-8.551" /></symbol>
+<symbol id="lucide-mic" viewBox="0 0 24 24"><!-- @license lucide-static v0.577.0 - ISC -->
+
+  <path d="M12 19v3" />
+  <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+  <rect x="9" y="2" width="6" height="13" rx="3" /></symbol>
+<symbol id="lucide-edit-3" viewBox="0 0 24 24"><!-- @license lucide-static v0.577.0 - ISC -->
+
+  <path d="M13 21h8" />
+  <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" /></symbol>
+<symbol id="lucide-check-circle" viewBox="0 0 24 24"><!-- @license lucide-static v0.577.0 - ISC -->
+
+  <path d="M21.801 10A10 10 0 1 1 17 3.335" />
+  <path d="m9 11 3 3L22 4" /></symbol>
+<symbol id="lucide-download" viewBox="0 0 24 24"><!-- @license lucide-static v0.577.0 - ISC -->
+
+  <path d="M12 15V3" />
+  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+  <path d="m7 10 5 5 5-5" /></symbol>
+<symbol id="lucide-wand-2" viewBox="0 0 24 24"><!-- @license lucide-static v0.577.0 - ISC -->
+
+  <path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72" />
+  <path d="m14 7 3 3" />
+  <path d="M5 6v4" />
+  <path d="M19 14v4" />
+  <path d="M10 2v2" />
+  <path d="M7 8H3" />
+  <path d="M21 16h-4" />
+  <path d="M11 3H9" /></symbol>
+<symbol id="lucide-x" viewBox="0 0 24 24"><!-- @license lucide-static v0.577.0 - ISC -->
+
+  <path d="M18 6 6 18" />
+  <path d="m6 6 12 12" /></symbol>
+<symbol id="lucide-send" viewBox="0 0 24 24"><!-- @license lucide-static v0.577.0 - ISC -->
+
+  <path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z" />
+  <path d="m21.854 2.147-10.94 10.939" /></symbol>
+<symbol id="lucide-layout-dashboard" viewBox="0 0 24 24"><!-- @license lucide-static v0.577.0 - ISC -->
+
+  <rect width="7" height="9" x="3" y="3" rx="1" />
+  <rect width="7" height="5" x="14" y="3" rx="1" />
+  <rect width="7" height="9" x="14" y="12" rx="1" />
+  <rect width="7" height="5" x="3" y="16" rx="1" /></symbol>
+<symbol id="lucide-folder-open" viewBox="0 0 24 24"><path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.55 6a2 2 0 0 1-1.94 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"/></symbol>
+<symbol id="lucide-save" viewBox="0 0 24 24"><path d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7"/><path d="M7 3v4a1 1 0 0 0 1 1h7"/></symbol>
+<symbol id="lucide-refresh-cw" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol>
+<symbol id="lucide-x-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></symbol>
+<symbol id="lucide-file-text" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></symbol>
+</svg>
+  <div id="app">
+    <!-- Background particles -->
+    <div class="bg-particles">
+      <div class="particle" v-for="n in 8" :key="n" :style="particleStyle(n)"></div>
+    </div>
+
+    <!-- Nav bar -->
+    <nav class="navbar glass" v-if="user.loggedIn">
+      <div class="nav-brand" @click="currentView = 'dashboard'">
+        <span class="brand-icon brand-icon-text">欢</span>
+        <span class="brand-text">欢欢制卡机</span>
+        <span class="brand-version">__APP_DISPLAY_VERSION__</span>
+      </div>
+      <div class="nav-links">
+        <a :class="{ active: currentView === 'dashboard' }" @click="currentView = 'dashboard'">仪表盘</a>
+        <a :class="{ active: currentView === 'create' }" @click="resetCreateState(); currentView = 'create'">创建角色卡</a>
+        <a :class="{ active: currentView === 'cards' }" @click="currentView = 'cards'">我的卡片</a>
+        <a :class="{ active: currentView === 'settings' }" @click="currentView = 'settings'">API 设置</a>
+        <a :class="{ active: currentView === 'agent-chat' }" @click="currentView = 'agent-chat'">AI 助手</a>
+      </div>
+      <div class="nav-user">
+        <img :src="avatarUrl" class="avatar" alt="avatar">
+        <span class="username">{{ user.user?.global_name }}</span>
+        <button class="btn btn-sm btn-ghost" @click="logout">退出</button>
+      </div>
+    </nav>
+
+    <!-- Login Page -->
+    <div v-if="!user.loggedIn" class="login-page">
+      <div class="login-card glass">
+        <div class="login-header">
+          <div class="login-logo">
+            <span class="brand-icon-text brand-icon-lg">欢</span>
+          </div>
+          <h1>欢欢制卡站</h1>
+          <p class="login-subtitle">SillyTavern 角色卡自动创作平台</p>
+        </div>
+        <div class="login-features">
+          <div class="feature-item">
+            <span class="feature-icon"><svg class="lucide" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-sparkles"/></svg></span>
+            <span>AI 驱动角色创作</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon"><svg class="lucide" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-palette"/></svg></span>
+            <span>自动生成角色封面</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon"><svg class="lucide" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-package"/></svg></span>
+            <span>一键导出 ST 格式</span>
+          </div>
+        </div>
+        <a href="/auth/discord" class="btn btn-discord btn-lg">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+          使用 Discord 登录
+        </a>
+        <p class="login-footer">使用你自己的 API Key，我们不储存任何生成内容的所有权</p>
+      </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div v-if="user.loggedIn && currentView === 'dashboard'" class="page-content fade-in">
+      <div class="page-header">
+        <h2>欢迎回来，{{ user.user?.global_name }}</h2>
+        <p>开始创作你的角色卡吧</p>
+      </div>
+      <div class="dashboard-grid">
+        <div class="dash-card glass" @click="resetCreateState(); currentView = 'create'">
+          <div class="dash-card-icon"><svg class="lucide" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-sparkles"/></svg></div>
+          <h3>创建角色卡</h3>
+          <p>使用 AI 辅助创作全新的角色卡</p>
+        </div>
+        <div class="dash-card glass" @click="currentView = 'cards'">
+          <div class="dash-card-icon"><svg class="lucide" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-book-open"/></svg></div>
+          <h3>我的卡片</h3>
+          <p>查看和管理已生成的角色卡（{{ cardCount }} 张）</p>
+        </div>
+        <div class="dash-card glass" @click="currentView = 'settings'">
+          <div class="dash-card-icon"><svg class="lucide" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-settings"/></svg></div>
+          <h3>API 设置</h3>
+          <p>配置你的 AI 和图片生成 API Key</p>
+        </div>
+        <div class="dash-card glass" @click="currentView = 'agent-chat'">
+          <div class="dash-card-icon"><svg class="lucide" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-message-circle"/></svg></div>
+          <h3>和 AI 聊着做</h3>
+          <p>通过对话方式创建角色卡，支持导入预设</p>
+        </div>
+      </div>
+      <div class="info-banner glass">
+        <h4><svg class="lucide" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-clipboard-list"/></svg> 使用说明</h4>
+        <ol>
+          <li>先在「API 设置」中配置你的 AI API Key（OpenAI 兼容格式），可选配置图片 API 用于生成封面</li>
+          <li>三种创作方式任选：<strong>从零制卡</strong>（8 步向导）/ <strong>小说导入</strong>（粘贴文本自动提取）/ <strong>和 AI 聊着做</strong>（对话式引导）</li>
+          <li>每一步都由 AI 实时生成，支持多角色分步生成世界书、开场白美化、MVU 变量系统</li>
+          <li>随时保存草稿，导入已有角色卡会自动保留原始世界书条目</li>
+          <li>最终打包成 SillyTavern 标准 PNG 角色卡，内嵌自动更新推送</li>
+        </ol>
+        <p class="info-note">BYOK（自带 Key），平台不存储对话内容 · 所有卡片自动附带 CC BY-NC 4.0 协议</p>
+      </div>
+    </div>
+
+    <!-- Agent Chat -->
+    <div v-if="user.loggedIn && currentView === 'agent-chat'" class="page-content fade-in">
+      <!-- Setup Modal -->
+      <div v-if="agentChat.showSetupModal" class="modal-overlay">
+        <div class="modal glass agent-setup-modal">
+          <h3>选择创作方式</h3>
+          <p>你可以导入 SillyTavern 预设来定制 AI 的引导风格，或直接开始使用欢欢内置方法论。</p>
+
+          <div class="agent-setup-options">
+            <div class="agent-setup-option glass" @click="$refs.presetFileInput.click()">
+              <svg class="lucide" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-upload"/></svg>
+              <h4>导入预设</h4>
+              <p>上传 SillyTavern 预设 JSON 文件</p>
+            </div>
+            <input type="file" ref="presetFileInput" accept=".json" @change="handlePresetUpload" style="display:none">
+
+            <div class="agent-setup-option glass" @click="startAgentChat('default')">
+              <svg class="lucide" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-sparkles"/></svg>
+              <h4>直接开始</h4>
+              <p>使用欢欢人格拆解法引导创作</p>
+            </div>
+          </div>
+
+          <div v-if="agentChat.presetConfig" class="agent-preset-info glass">
+            <p>已导入预设：{{ agentChat.presetName }}</p>
+            <p>常驻条目：{{ agentChat.presetConfig.systemPrompt ? '已提取' : '无' }}</p>
+            <p>流水线步骤：{{ agentChat.presetConfig.pipelineSteps.length }} 个</p>
+            <button class="btn btn-primary" @click="startAgentChat('preset')">使用此预设开始</button>
+          </div>
+
+          <button class="btn btn-ghost" @click="currentView = 'dashboard'" style="margin-top:1rem">返回</button>
+        </div>
+      </div>
+
+      <!-- Chat Interface -->
+      <div v-if="!agentChat.showSetupModal" class="agent-chat-container">
+        <div class="agent-chat-header glass">
+          <div class="agent-chat-header-left">
+            <h3>AI 角色卡助手</h3>
+            <span class="agent-mode-badge">{{ agentChat.mode === 'preset' ? agentChat.presetName : '欢欢方法论' }}</span>
+          </div>
+          <div class="agent-chat-header-right">
+            <select v-model="cardForm.aiKeyId" class="form-control form-control-sm">
+              <option value="">选择 AI...</option>
+              <option v-for="k in textAIKeys" :key="k.id" :value="k.id">{{ k.label || providerLabel(k.provider) }}</option>
+            </select>
+            <button class="btn btn-sm btn-ghost" @click="resetAgentChat">重新开始</button>
+          </div>
+        </div>
+
+        <div class="agent-messages" ref="agentMessagesEl">
+          <div v-if="agentChat.messages.length === 0" class="agent-welcome glass">
+            <p>你好！我是欢欢的 AI 角色卡创作助手。</p>
+            <p>告诉我你想创建什么样的角色吧，哪怕只有一个模糊的想法也没关系。</p>
+          </div>
+          <div v-for="(msg, idx) in agentChat.messages" :key="idx"
+               class="agent-message" :class="'agent-message-' + msg.role">
+            <div class="agent-message-content" v-html="msg.role === 'assistant' ? renderAgentMessage(msg.content) : escapeHtml(msg.content)"></div>
+          </div>
+          <div v-if="agentChat.streaming" class="agent-message agent-message-assistant">
+            <div class="agent-typing">AI 正在思考<span class="agent-typing-dots"><span>.</span><span>.</span><span>.</span></span></div>
+          </div>
+        </div>
+
+        <div v-if="agentChat.cardReady" class="agent-card-ready glass">
+          <p>角色信息收集完毕！</p>
+          <button class="btn btn-primary" @click="extractAndFinalize" :disabled="agentChat.extracting">
+            {{ agentChat.extracting ? '正在生成...' : '生成角色卡' }}
+          </button>
+        </div>
+
+        <div v-else-if="agentChat.messages.filter(m => m.role === 'assistant').length >= 2" class="agent-card-ready-manual">
+          <button class="btn btn-secondary" @click="extractAndFinalize" :disabled="agentChat.extracting">
+            {{ agentChat.extracting ? '正在生成...' : '手动生成角色卡' }}
+          </button>
+        </div>
+
+        <div class="agent-input-area glass">
+          <textarea v-model="agentChat.inputText"
+                    class="agent-input"
+                    placeholder="输入你的想法..."
+                    @keydown.enter.exact.prevent="sendAgentMessage"
+                    :disabled="agentChat.sending"
+                    rows="2"></textarea>
+          <button class="btn btn-primary" @click="sendAgentMessage"
+                  :disabled="agentChat.sending || !agentChat.inputText.trim() || !cardForm.aiKeyId">
+            {{ agentChat.sending ? '发送中...' : '发送' }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- API Key Settings -->
+    <div v-if="user.loggedIn && currentView === 'settings'" class="page-content fade-in">
+      <div class="page-header">
+        <h2><svg class="lucide" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-settings"/></svg> API Key 管理</h2>
+        <p>配置你的 AI 和图片生成服务</p>
+      </div>
+
+      <!-- Add/Edit key card -->
+      <div class="settings-section glass">
+        <div class="settings-section-header">
+          <div class="settings-section-icon" style="background: var(--accent-gradient);">
+            <svg class="lucide" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-key"/></svg>
+          </div>
+          <h3>{{ editingKey ? '编辑 API Key' : '添加 API Key' }}</h3>
+        </div>
+
+        <!-- Provider card grid -->
+        <div class="form-group">
+          <label>服务类型</label>
+          <div class="settings-provider-grid">
+            <div class="settings-provider-card" :class="{ active: keyForm.provider === 'openai' }" @click="keyForm.provider = 'openai'">
+              <div class="settings-provider-dot" style="background: #22c55e;"></div>
+              <div class="settings-provider-name">OpenAI 兼容</div>
+              <div class="settings-provider-desc">覆盖所有 OpenAI 格式中转站</div>
+            </div>
+            <div class="settings-provider-card" :class="{ active: keyForm.provider === 'gemini_native' }" @click="keyForm.provider = 'gemini_native'">
+              <div class="settings-provider-dot" style="background: #38bdf8;"></div>
+              <div class="settings-provider-name">Gemini 原生</div>
+              <div class="settings-provider-desc">Google 原生 API</div>
+            </div>
+            <div class="settings-provider-card" :class="{ active: keyForm.provider === 'claude_native' }" @click="keyForm.provider = 'claude_native'">
+              <div class="settings-provider-dot" style="background: #60a5fa;"></div>
+              <div class="settings-provider-name">Claude 原生</div>
+              <div class="settings-provider-desc">Anthropic 原生 API</div>
+            </div>
+
+            <div class="settings-provider-card" :class="{ active: keyForm.provider === 'novelai' }" @click="keyForm.provider = 'novelai'">
+              <div class="settings-provider-dot" style="background: #60a5fa;"></div>
+              <div class="settings-provider-name">NovelAI</div>
+              <div class="settings-provider-desc">图片生成</div>
+            </div>
+            <div class="settings-provider-card" :class="{ active: keyForm.provider === 'custom_image' }" @click="keyForm.provider = 'custom_image'">
+              <div class="settings-provider-dot" style="background: #60a5fa;"></div>
+              <div class="settings-provider-name">自定义图片</div>
+              <div class="settings-provider-desc">自定义图片 API</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-grid" v-if="keyForm.provider">
+          <div class="form-group">
+            <label>标签（备注）</label>
+            <input v-model="keyForm.label" class="form-control settings-input" placeholder="例如：我的 GPT-4o">
+          </div>
+          <div class="form-group">
+            <label>API Key</label>
+            <input v-model="keyForm.apiKey" type="password" class="form-control settings-input" :placeholder="editingKey ? '留空则不修改' : 'sk-...'">
+            <p v-if="editingKey" class="form-hint">留空表示保留原 Key，只修改其他设置</p>
+          </div>
+          <div class="form-group">
+            <label>Base URL</label>
+            <input v-model="keyForm.baseUrl" class="form-control settings-input" :placeholder="baseUrlPlaceholder">
+          </div>
+          <div class="form-group">
+            <label>模型</label>
+            <div class="model-input-row">
+              <select v-if="modelList.length" v-model="keyForm.model" class="form-control settings-input">
+                <option value="">选择模型...</option>
+                <option v-for="m in modelList" :key="m.id" :value="m.id">{{ m.id }}</option>
+              </select>
+              <input v-else v-model="keyForm.model" class="form-control settings-input" placeholder="gpt-4o / claude-3.5-sonnet">
+              <button class="btn btn-sm btn-ghost" @click="fetchModels" :disabled="fetchingModels" type="button">
+                {{ fetchingModels ? '获取中...' : '获取模型' }}
+              </button>
+              <button v-if="modelList.length" class="btn btn-sm btn-ghost" @click="modelList = []; keyForm.model = ''" type="button">手动输入</button>
+            </div>
+          </div>
+        </div>
+        <div class="form-actions" v-if="keyForm.provider">
+          <button class="btn btn-primary settings-btn" @click="saveApiKey" :disabled="!keyForm.provider || (!keyForm.apiKey && !editingKey)">
+            {{ editingKey ? '保存修改' : '添加' }}
+          </button>
+          <button v-if="editingKey" class="btn btn-ghost" @click="cancelEditKey">取消</button>
+        </div>
+      </div>
+
+      <!-- Key list -->
+      <div class="settings-section glass" v-if="apiKeys.length">
+        <div class="settings-section-header">
+          <div class="settings-section-icon" style="background: linear-gradient(135deg, #38bdf8, #22d3ee);">
+            <svg class="lucide" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-list"/></svg>
+          </div>
+          <h3>已配置的 API Key</h3>
+        </div>
+        <div class="settings-key-list">
+          <div class="settings-key-card" v-for="key in apiKeys" :key="key.id">
+            <div class="settings-key-left">
+              <span class="settings-key-badge" :class="'settings-badge-' + providerBadgeClass(key.provider)">{{ providerLabel(key.provider) }}</span>
+              <div class="settings-key-info">
+                <span class="settings-key-label">{{ key.label || '未命名' }}</span>
+                <span class="settings-key-meta" v-if="key.base_url">{{ key.base_url }}</span>
+                <span class="settings-key-meta" v-if="key.model">{{ key.model }}</span>
+              </div>
+            </div>
+            <div class="settings-key-actions">
+              <button class="btn btn-sm btn-ghost" @click="editApiKey(key)">编辑</button>
+              <button class="btn btn-sm btn-danger" @click="deleteApiKey(key.id)">删除</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Empty state -->
+      <div v-if="!apiKeys.length" class="settings-empty glass">
+        <div class="settings-empty-icon">
+          <svg class="lucide" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-key"/></svg>
+        </div>
+        <p>还没有配置任何 API Key</p>
+        <p class="text-muted">在上方选择服务类型并添加 API Key 即可开始创作</p>
+      </div>
+
+      <!-- Advanced Settings -->
+      <div class="settings-section glass" style="margin-top: 1.5rem">
+        <div class="settings-section-header">
+          <div class="settings-section-icon" style="background: linear-gradient(135deg, #60a5fa, #67e8f9);">
+            <svg class="lucide" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-sliders-horizontal"/></svg>
+          </div>
+          <h3>高级设置</h3>
+        </div>
+        <div class="form-group">
+          <label>Prefill COT（预填充思维链）</label>
+          <p class="form-hint" style="margin-bottom: 0.5rem">为 Gemini 等模型预填充一段 assistant 消息，降低 NSFW 拒绝率。Claude 模型不建议开启。</p>
+          <div class="prefill-options">
+            <label class="radio-option" :class="{ active: prefillCOTSetting === 'auto' }">
+              <input type="radio" v-model="prefillCOTSetting" value="auto"> 自动
+              <span class="radio-hint">Gemini 开，Claude 关，其他关</span>
+            </label>
+            <label class="radio-option" :class="{ active: prefillCOTSetting === 'on' }">
+              <input type="radio" v-model="prefillCOTSetting" value="on"> 强制开启
+            </label>
+            <label class="radio-option" :class="{ active: prefillCOTSetting === 'off' }">
+              <input type="radio" v-model="prefillCOTSetting" value="off"> 关闭
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Create Card -->
+    <div v-if="user.loggedIn && currentView === 'create'" class="page-content fade-in">
+      <div class="page-header">
+        <h2><svg class="lucide" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-sparkles"/></svg> 创建角色卡</h2>
+        <p>按步骤填写信息，AI 会帮你生成完整的角色卡</p>
+        <div class="import-card-row" style="flex-wrap:wrap">
+          <label class="btn btn-ghost btn-sm import-card-btn">
+            <svg class="lucide" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-upload"/></svg>
+            {{ importingCard ? '解析中...' : '导入已有角色卡' }}
+            <input type="file" accept="image/png,.png" @change="importCard" style="display:none" :disabled="importingCard">
+          </label>
+          <label class="btn btn-ghost btn-sm import-card-btn wb-novel-trigger">
+            <svg class="lucide" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-book-open"/></svg>
+            从小说导入
+            <input type="file" accept=".txt" @change="handleNovelFile" style="display:none" :disabled="novelImport.extracting">
+          </label>
+          <button class="btn btn-ghost btn-sm" @click="showDrafts = !showDrafts">
+            <svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><use href="#lucide-folder-open"/></svg> 草稿箱<span v-if="drafts.length">({{ drafts.length }})</span>
+          </button>
+          <button class="btn btn-ghost btn-sm" @click="saveDraft()" v-if="hasCreateContent()">
+            <svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><use href="#lucide-save"/></svg> 保存草稿
+          </button>
+          <button class="btn btn-ghost btn-sm" @click="openTemplateEditor()">
+            <svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><use href="#lucide-settings"/></svg> 自定义模板
+          </button>
+          <span class="import-hint" style="width:100%;margin-top:-0.25rem;font-size:0.78em">上传 PNG 角色卡或 TXT 小说文件</span>
+        </div>
+
+        <!-- 草稿箱面板 -->
+        <div v-if="showDrafts" class="form-card glass" style="margin-top:12px">
+          <h3 style="margin:0 0 12px"><svg class="lucide" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><use href="#lucide-folder-open"/></svg> 草稿箱</h3>
+          <div v-if="!drafts.length" style="color:var(--text-secondary);padding:16px 0;text-align:center">暂无草稿</div>
+          <div v-for="d in drafts" :key="d.id" style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--glass-border)">
+            <div style="flex:1;min-width:0">
+              <div style="font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ d.name || '未命名草稿' }}</div>
+              <div style="font-size:0.8em;color:var(--text-secondary)">{{ formatDraftTime(d.timestamp) }}</div>
+            </div>
+            <button class="btn btn-sm btn-primary" @click="restoreDraft(d)">恢复</button>
+            <button class="btn btn-sm btn-ghost" @click="deleteDraft(d.id)" style="color:var(--danger)">删除</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 模板编辑器面板 -->
+      <div v-if="templateEditor.show" class="form-card glass" style="margin-top:12px">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+          <h3 style="margin:0"><svg class="lucide" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><use href="#lucide-settings"/></svg> 自定义模板</h3>
+          <button class="btn btn-sm btn-ghost" @click="templateEditor.show = false" style="margin-left:auto">✕ 关闭</button>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:12px">
+          <select class="form-control" style="width:auto;min-width:180px" :value="templateEditor.currentName" @change="switchTemplate($event.target.value)">
+            <option v-for="name in templateNames" :key="name" :value="name">
+              {{ templateNameMap[name] }}{{ isTemplateCustomized(name) ? ' (已编辑)' : '' }}
+            </option>
+          </select>
+          <span v-if="isTemplateCustomized(templateEditor.currentName)" style="color:var(--primary);font-size:0.85em"><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><use href="#lucide-edit-3"/></svg> 已自定义</span>
+        </div>
+        <div v-if="templateEditor.loading" style="text-align:center;padding:40px 0;color:var(--text-secondary)">加载中...</div>
+        <textarea v-else v-model="templateEditor.currentContent" class="form-control" style="height:clamp(200px,40vh,400px);font-family:'Fira Code',Consolas,'Courier New',monospace;font-size:0.85em;white-space:pre;resize:vertical"></textarea>
+        <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+          <button class="btn btn-primary btn-sm" @click="saveCustomTemplate()"><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><use href="#lucide-save"/></svg> 保存自定义</button>
+          <button class="btn btn-ghost btn-sm" @click="resetTemplate()" :disabled="!isTemplateCustomized(templateEditor.currentName)"><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><use href="#lucide-refresh-cw"/></svg> 恢复默认</button>
+        </div>
+      </div>
+
+      <!-- Novel Import Panel -->
+      <div v-if="novelImport.showPanel" class="wb-novel-panel">
+        <h3>
+          <svg class="lucide" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><use href="#lucide-book-open"/></svg> 从小说导入
+          <button class="btn btn-sm btn-ghost" @click="novelImport.showPanel = false" style="margin-left:auto">✕ 关闭</button>
+        </h3>
+
+        <!-- File info -->
+        <div class="wb-novel-file-row">
+          <span class="wb-novel-file-info" v-if="novelImport.fileName">
+            <svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><use href="#lucide-file-text"/></svg> {{ novelImport.fileName }} ({{ (novelImport.fileSize / 1024 / 1024).toFixed(2) }}MB)
+          </span>
+          <label class="btn btn-sm btn-ghost">
+            重新选择
+            <input type="file" accept=".txt" @change="handleNovelFile" style="display:none">
+          </label>
+        </div>
+        <div class="wb-novel-encoding">
+          <label>编码：</label>
+          <select v-model="novelImport.encoding" @change="reDecodeNovel">
+            <option value="auto">自动检测</option>
+            <option value="utf-8">UTF-8</option>
+            <option value="gbk">GBK</option>
+            <option value="gb18030">GB18030</option>
+          </select>
+          <span v-if="novelImport.detectedEncoding" class="wb-novel-file-info">(检测到: {{ novelImport.detectedEncoding }})</span>
+        </div>
+
+        <!-- Chapter split results -->
+        <div v-if="novelImport.chapters.length" class="wb-novel-section">
+          <div class="wb-novel-section-title">── 分割结果 ──</div>
+          <div class="wb-novel-stats">
+            <span><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><use href="#lucide-list"/></svg> 共 {{ novelImport.chapters.length }} 章</span>
+            <span><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><use href="#lucide-package"/></svg> 分为 {{ novelImport.chunks.length }} 块</span>
+          </div>
+          <div class="wb-novel-chunk-input">
+            <label>每块最大：</label>
+            <input type="number" v-model.number="novelImport.maxChunkSize" min="5000" step="5000" @change="rechunkNovel">
+            <span class="wb-novel-file-info">字符</span>
+          </div>
+        </div>
+
+        <!-- Extract progress -->
+        <div v-if="novelImport.extracting || novelImport.extractDone" class="wb-novel-section">
+          <div class="wb-novel-section-title">── 提取进度 ──</div>
+          <div class="wb-novel-progress">
+            <div class="wb-novel-progress-bar">
+              <div class="wb-novel-progress-fill" :style="{ width: novelImport.extractProgress + '%' }"></div>
+            </div>
+            <div class="wb-novel-progress-text">
+              {{ novelImport.extractCurrent }}/{{ novelImport.chunks.length }} 块
+              ({{ Math.round(novelImport.extractProgress) }}%)
+              <span v-if="novelImport.extractDone" style="color:var(--accent-green)"><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><use href="#lucide-check-circle"/></svg> 完成</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Error -->
+        <div v-if="novelImport.error" class="wb-novel-error"><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><use href="#lucide-x-circle"/></svg> {{ novelImport.error }}</div>
+
+        <!-- Discovered characters (with phase info) -->
+        <div v-if="novelImport.extractedCharacters.length" class="wb-novel-section">
+          <div class="wb-novel-section-title">── 发现角色 ({{ novelImport.extractedCharacters.length }}) ──</div>
+          <div class="wb-novel-characters">
+            <label class="wb-novel-char-item" v-for="(c, ci) in novelImport.extractedCharacters" :key="ci">
+              <input type="checkbox" v-model="c.selected">
+              <span class="wb-novel-char-name">{{ c.name }}</span>
+              <span class="wb-novel-char-desc" v-if="c.role">— {{ c.role }}</span>
+              <span class="wb-novel-char-desc" v-if="c.phases && c.phases.length > 1"> ({{ c.phases.length }}个阶段)</span>
+              <span class="wb-novel-char-desc" v-if="c.departure"> [已离场]</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- World settings -->
+        <div v-if="novelImport.extractedWorldSettings.length" class="wb-novel-section">
+          <div class="wb-novel-section-title">── 世界观设定 ({{ novelImport.extractedWorldSettings.length }}) ──</div>
+          <div class="wb-novel-characters">
+            <label class="wb-novel-char-item" v-for="(w, wi) in novelImport.extractedWorldSettings" :key="wi">
+              <input type="checkbox" v-model="w.selected">
+              <span class="wb-novel-char-name">{{ w.name }}</span>
+              <span class="wb-novel-char-desc" v-if="w.category"> [{{ w.category }}]</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Timeline -->
+        <div v-if="novelImport.extractedTimeline.length" class="wb-novel-section">
+          <div class="wb-novel-section-title">── 时间线事件 ({{ novelImport.extractedTimeline.length }}) ──</div>
+          <div class="wb-novel-characters" style="max-height:200px;overflow-y:auto">
+            <div class="wb-novel-char-item" v-for="(t, ti) in novelImport.extractedTimeline" :key="ti" style="display:block;padding:4px 0">
+              <span class="wb-novel-char-name">{{ t.event }}</span>
+              <span class="wb-novel-char-desc" v-if="t.period"> — {{ t.period }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Causal chains -->
+        <div v-if="novelImport.extractedCausalChains.length" class="wb-novel-section">
+          <div class="wb-novel-section-title">── 因果链 ({{ novelImport.extractedCausalChains.length }}) ──</div>
+          <div class="wb-novel-characters" style="max-height:200px;overflow-y:auto">
+            <div class="wb-novel-char-item" v-for="(cc, cci) in novelImport.extractedCausalChains" :key="cci" style="display:block;padding:4px 0">
+              <span class="wb-novel-char-name" :style="cc.narrative_weight === 'critical' ? 'color:var(--accent-pink)' : ''">{{ cc.trigger }}</span>
+              <span class="wb-novel-char-desc" v-if="cc.consequences"> → {{ cc.consequences.join(' → ') }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action buttons -->
+        <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap">
+          <button v-if="novelImport.chapters.length && !novelImport.extracting && !novelImport.extractDone"
+            class="btn btn-primary" @click="startNovelExtract" :disabled="!cardForm.aiKeyId && !textAIKeys.length">
+            开始 AI 提取
+          </button>
+          <button v-if="novelImport.extracting" class="btn btn-ghost" disabled>
+            提取中...
+          </button>
+          <button v-if="novelImport.extractDone" class="btn btn-primary" @click="generateNovelWorldbook">
+            生成世界书条目 →
+          </button>
+        </div>
+      </div>
+
+      <!-- Step indicator -->
+      <div class="step-indicator glass">
+        <div class="step" v-for="(s, i) in steps" :key="i" :class="{ active: createStep === i, done: createStep > i }" @click="goToStep(i)">
+          <div class="step-num">{{ createStep > i ? '✓' : i }}</div>
+          <div class="step-label">{{ s.label }}</div>
+        </div>
+      </div>
+
+      <!-- 自动保存状态（全局，所有 step 共享） -->
+      <p v-if="autosaveStatus" style="text-align:right;margin:4px 0 8px 0;color:var(--text-dim);font-size:12px;opacity:0.7">
+        <svg class="lucide" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:3px"><use href="#lucide-save"/></svg>
+        {{ autosaveStatus }}<span v-if="autosaveAt">（{{ autosaveAt }}）</span>
+      </p>
+
+      <!-- ==================== Step 0: 基本信息 ==================== -->
+      <div v-if="createStep === 0" class="form-card glass">
+        <h3><svg class="lucide" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-clipboard-list"/></svg> 基本信息</h3>
+        <div class="form-group">
+          <label>作品名称 <span class="required">*</span></label>
+          <input v-model="cardForm.name" class="form-control" placeholder="给你的作品起个名字">
+        </div>
+        <div class="form-group">
+          <label>作品类型</label>
+          <input v-model="cardForm.workType" class="form-control" placeholder="例如：奇幻冒险 / 现代都市 / 赛博朋克 / 历史架空 / 校园日常">
+        </div>
+        <div class="form-group">
+          <label>选择文本 AI</label>
+          <select v-model="cardForm.aiKeyId" class="form-control">
+            <option value="">自动选择</option>
+            <option v-for="k in textAIKeys" :key="k.id" :value="k.id">{{ k.label || providerLabel(k.provider) }} {{ k.model ? '(' + k.model + ')' : '' }}</option>
+          </select>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-primary" @click="createStep = 1" :disabled="!cardForm.name">下一步 →</button>
+        </div>
+      </div>
+
+      <!-- ==================== Step 1: 角色设定 ==================== -->
+      <div v-if="createStep === 1" class="form-card glass">
+        <h3><svg class="lucide" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-drama"/></svg> 角色设定</h3>
+
+        <!-- 角色列表 -->
+        <div v-for="(char, idx) in cardForm.characters" :key="idx" class="character-card glass" style="margin-bottom: 16px; padding: 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);">
+          
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <h4 style="margin: 0; font-size: 1rem;">
+              {{ char.mode === 'simple' ? (char.nameSimple || `角色 ${idx + 1}`) : (char.name || `角色 ${idx + 1}`) }}
+            </h4>
+            <button v-if="cardForm.characters.length > 1" class="btn btn-sm btn-danger" @click="removeCharacter(idx)">✕ 移除</button>
+          </div>
+
+          <!-- 模式切换 -->
+          <div class="form-group">
+            <div class="mode-toggle">
+              <button :class="['btn btn-sm', char.mode === 'simple' ? 'btn-primary' : 'btn-ghost']" @click="char.mode = 'simple'"><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-pen-line"/></svg> 简略模式</button>
+              <button :class="['btn btn-sm', char.mode === 'detailed' ? 'btn-primary' : 'btn-ghost']" @click="char.mode = 'detailed'"><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-clipboard-list"/></svg> 详细模式</button>
+            </div>
+          </div>
+
+          <!-- 简略模式 -->
+          <div v-if="char.mode === 'simple'">
+            <div class="form-group">
+              <label>角色名称 <span class="required">*</span></label>
+              <input v-model="char.nameSimple" class="form-control" placeholder="深夜咖啡馆「月隐」的老板娘">
+            </div>
+            <div class="form-group">
+              <label>角色描述 <span class="required">*</span></label>
+              <textarea v-model="char.input" class="form-control textarea-lg" placeholder="描述你想要的角色，越详细越好。&#10;例如：在现代都市经营深夜咖啡馆的神秘女孩，表面慵懒实则能看见灵体..."></textarea>
+            </div>
+          </div>
+
+          <!-- 详细模式 -->
+          <div v-if="char.mode === 'detailed'">
+            <!-- 角色定位 -->
+            <div class="form-group">
+              <label><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-map-pin"/></svg> 角色定位</label>
+              <input v-model="char.role" class="form-control" placeholder="例如：女主角、反派、导师">
+            </div>
+            <div class="form-group">
+              <label><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-tag"/></svg> 角色名称 <span class="required">*</span></label>
+              <input v-model="char.name" class="form-control" placeholder="林月隐">
+            </div>
+
+            <!-- 基本属性 (2列) -->
+            <div class="char-grid-2col">
+              <div class="form-group">
+                <label>性别</label>
+                <input v-model="char.gender" class="form-control" placeholder="女">
+              </div>
+              <div class="form-group">
+                <label>年龄</label>
+                <input v-model="char.age" class="form-control" placeholder="外表22岁，实际年龄不详">
+              </div>
+              <div class="form-group">
+                <label>种族</label>
+                <input v-model="char.race" class="form-control" placeholder="半灵体人类">
+              </div>
+              <div class="form-group">
+                <label>身高体型</label>
+                <input v-model="char.height" class="form-control" placeholder="165cm，纤细">
+              </div>
+            </div>
+
+            <div class="char-grid-2col">
+              <div class="form-group">
+                <label>发型发色</label>
+                <input v-model="char.hair" class="form-control" placeholder="银白色长发，微卷">
+              </div>
+              <div class="form-group">
+                <label>眼睛</label>
+                <input v-model="char.eyes" class="form-control" placeholder="琥珀色瞳孔，看灵体时会泛紫光">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-user"/></svg> 其他外貌特征</label>
+              <textarea v-model="char.appearance" class="form-control" rows="2" placeholder="左耳有一颗银色的小耳钉..."></textarea>
+            </div>
+
+            <div class="char-grid-2col">
+              <div class="form-group">
+                <label>日常着装</label>
+                <input v-model="char.outfitDaily" class="form-control" placeholder="咖啡色围裙 + 白衬衫 + 长裙">
+              </div>
+              <div class="form-group">
+                <label>特殊场合着装</label>
+                <input v-model="char.outfitSpecial" class="form-control" placeholder="黑色斗篷 + 银饰">
+              </div>
+            </div>
+            <div class="form-group">
+              <label><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-shirt"/></svg> 配饰装备</label>
+              <textarea v-model="char.accessories" class="form-control" rows="2" placeholder="随身携带一个银色怀表..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-heart"/></svg> 核心性格</label>
+              <textarea v-model="char.personality" class="form-control" rows="3" placeholder="温柔中带着疏离感..."></textarea>
+            </div>
+
+            <div class="char-grid-2col">
+              <div class="form-group">
+                <label>说话方式</label>
+                <input v-model="char.speech" class="form-control" placeholder="语速缓慢，喜欢用隐喻">
+              </div>
+              <div class="form-group">
+                <label>口头禅</label>
+                <input v-model="char.catchphrase" class="form-control" placeholder="「这杯咖啡，可不普通哦」">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>行为习惯</label>
+              <textarea v-model="char.habits" class="form-control" rows="2" placeholder="思考时会转动怀表..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-briefcase"/></svg> 职业/身份</label>
+              <input v-model="char.occupation" class="form-control" placeholder="「月隐」咖啡馆老板 / 灵体调解人">
+            </div>
+            <div class="form-group">
+              <label>过去经历</label>
+              <textarea v-model="char.backstory" class="form-control" rows="3" placeholder="从外婆那里继承了看见灵体的能力..."></textarea>
+            </div>
+            <div class="form-group">
+              <label><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-users"/></svg> 人际关系</label>
+              <textarea v-model="char.relationships" class="form-control" rows="2" placeholder="与常客们关系密切，但保持距离..."></textarea>
+            </div>
+
+            <div class="char-grid-2col">
+              <div class="form-group">
+                <label><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-target"/></svg> 目标愿望</label>
+                <textarea v-model="char.goals" class="form-control" rows="2" placeholder="找到外婆失踪的真相"></textarea>
+              </div>
+              <div class="form-group">
+                <label>恐惧弱点</label>
+                <textarea v-model="char.fears" class="form-control" rows="2" placeholder="害怕完全黑暗的环境"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <label><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-zap"/></svg> 技能与能力</label>
+              <textarea v-model="char.skills" class="form-control" rows="2" placeholder="灵视（看见灵体）、调制特殊咖啡"></textarea>
+            </div>
+            <div class="form-group">
+              <label><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-pen-line"/></svg> 补充说明</label>
+              <textarea v-model="char.notes" class="form-control" rows="2" placeholder="其他需要补充的角色信息"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- 添加角色按钮 -->
+        <div style="text-align: center; margin: 16px 0;">
+          <button class="btn btn-secondary" @click="addCharacter"><svg class="lucide" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-plus"/></svg> 添加角色</button>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn btn-ghost" @click="createStep = 0">← 上一步</button>
+          <button class="btn btn-primary" @click="generateStep('character')" :disabled="generating || !hasCharacterInput">
+            {{ generating ? '生成中...' : '开始生成角色设定' }}
+          </button>
+          <button class="btn btn-ghost" @click="createStep = 2" v-if="results.character">跳过，使用已有结果 →</button>
+        </div>
+      </div>
+
+      <!-- ==================== Step 2: 世界观构建 ==================== -->
+      <div v-if="createStep === 2" class="form-card glass">
+        <h3><svg class="lucide" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-globe"/></svg> 世界观构建</h3>
+
+        <!-- 模式切换 -->
+        <div class="mode-toggle-container">
+          <span class="mode-label">填写模式：</span>
+          <button type="button" class="mode-toggle-btn" :class="{ active: cardForm.worldbookMode === 'simple' }" @click="cardForm.worldbookMode = 'simple'"><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-pen-line"/></svg> 简略模式</button>
+          <button type="button" class="mode-toggle-btn" :class="{ active: cardForm.worldbookMode === 'detailed' }" @click="cardForm.worldbookMode = 'detailed'"><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-clipboard-list"/></svg> 详细模式</button>
+        </div>
+
+        <!-- 简略模式 -->
+        <div v-if="cardForm.worldbookMode === 'simple'">
+          <div class="form-group">
+            <label>世界观大纲</label>
+            <textarea v-model="cardForm.worldbookInput" class="form-control textarea-lg" placeholder="简要描述你想要的世界观，例如：&#10;- 时代：现代都市，表面繁华实则暗流涌动&#10;- 地点：一座沿海城市的老城区&#10;- 特色：普通人不知道的灵异存在、都市传说背后的真相、隐秘的超自然组织"></textarea>
+          </div>
+        </div>
+
+        <!-- 详细模式 -->
+        <div v-if="cardForm.worldbookMode === 'detailed'">
+          <div class="form-group">
+            <label>时代/时期</label>
+            <input v-model="cardForm.bgEra" class="form-control" placeholder="例如：现代，21世纪的某个沿海城市">
+          </div>
+          <div class="form-group">
+            <label>主要地点</label>
+            <input v-model="cardForm.bgLocation" class="form-control" placeholder="例如：老城区的深巷、神秘的咖啡馆和周边街区">
+          </div>
+          <div class="form-group">
+            <label>背景描述</label>
+            <textarea v-model="cardForm.bgDescription" class="form-control textarea-lg" placeholder="详细描述世界的背景设定..."></textarea>
+          </div>
+          <div class="form-group">
+            <label>特殊规则/系统（可选）</label>
+            <textarea v-model="cardForm.bgSpecialRules" class="form-control" placeholder="例如：&#10;- 能力系统：每个异能者都有独特的感知类型&#10;- 代价法则：使用能力会消耗精神力，过度使用有副作用"></textarea>
+          </div>
+          <div class="form-group">
+            <label>补充说明</label>
+            <textarea v-model="cardForm.bgNotes" class="form-control" placeholder="其他背景设定相关的说明、灵感、参考资料等"></textarea>
+          </div>
+        </div>
+
+        <!-- 多角色世界书分步生成 -->
+        <div v-if="cardForm.characters.length > 1" class="char-wb-section" style="margin-top:1rem">
+          <h4 style="font-size:0.95rem;margin-bottom:0.5rem;opacity:0.85">
+            <svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#lucide-users"/></svg>
+            角色世界书条目（自动生成，也可单独重新生成）
+          </h4>
+          <div v-for="(char, idx) in cardForm.characters" :key="idx" class="char-wb-row" style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.4rem;padding:0.4rem 0.6rem;border-radius:8px;background:rgba(255,255,255,0.04)">
+            <span style="flex:1;font-size:0.9rem">{{ (char.mode === 'simple' ? char.nameSimple : char.name) || ('角色 ' + (idx + 1)) }}</span>
+            <span v-if="charWBGenerated[idx]" style="color:var(--success);font-size:0.8rem;display:flex;align-items:center;gap:2px">
+              <svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#lucide-check-circle"/></svg>
+              已生成
+            </span>
+            <button class="btn btn-sm btn-primary" @click="generateSingleCharacterWB(idx)"
+                    :disabled="generatingCharWBIndex >= 0"
+                    v-if="!charWBGenerated[idx]">
+              <svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#lucide-sparkles"/></svg>
+              {{ generatingCharWBIndex === idx ? '生成中...' : '生成世界书' }}
+            </button>
+            <button class="btn btn-sm btn-ghost" @click="generateSingleCharacterWB(idx)"
+                    :disabled="generatingCharWBIndex >= 0"
+                    v-if="charWBGenerated[idx]">
+              <svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#lucide-refresh-cw"/></svg>
+              重新生成
+            </button>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn btn-ghost" @click="createStep = 1">← 上一步</button>
+          <button class="btn btn-primary" @click="generateStep('worldbook')" :disabled="generating">
+            {{ generating ? '生成中...' : 'AI 生成世界书' }}
+          </button>
+          <button class="btn btn-ghost" @click="createStep = 3" v-if="results.worldbook">跳过 →</button>
+        </div>
+      </div>
+
+      <!-- ==================== Step 3: 开场白 ==================== -->
+      <div v-if="createStep === 3" class="form-card glass">
+        <h3><svg class="lucide" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-message-circle"/></svg> 开场白</h3>
+
+        <div class="form-group">
+          <label>场景类型</label>
+          <input v-model="cardForm.openingScene" class="form-control" placeholder="例如：日常 / 冒险 / 悬疑 / 战斗 / 浪漫">
+        </div>
+
+        <div class="form-group">
+          <label>目标篇幅</label>
+          <div class="radio-group">
+            <label class="radio-item">
+              <input type="radio" v-model="cardForm.openingLength" value="简单场景（300-500字）"> 简单场景（300-500字）
+            </label>
+            <label class="radio-item">
+              <input type="radio" v-model="cardForm.openingLength" value="标准场景（500-800字）"> 标准场景（500-800字）
+            </label>
+            <label class="radio-item">
+              <input type="radio" v-model="cardForm.openingLength" value="复杂场景（800-1500字）"> 复杂场景（800-1500字）
+            </label>
+          </div>
+        </div>
+
+        <!-- 模式切换 -->
+        <div class="mode-toggle-container">
+          <span class="mode-label">填写模式：</span>
+          <button type="button" class="mode-toggle-btn" :class="{ active: cardForm.greetingMode === 'simple' }" @click="cardForm.greetingMode = 'simple'"><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-pen-line"/></svg> 简略模式</button>
+          <button type="button" class="mode-toggle-btn" :class="{ active: cardForm.greetingMode === 'detailed' }" @click="cardForm.greetingMode = 'detailed'"><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-clipboard-list"/></svg> 详细模式</button>
+        </div>
+
+        <!-- 简略模式 -->
+        <div v-if="cardForm.greetingMode === 'simple'">
+          <div class="form-group">
+            <label>开场白大纲</label>
+            <textarea v-model="cardForm.greetingInput" class="form-control textarea-lg" placeholder="描述你希望的开场场景，例如：&#10;- 场景：深夜，{{user}} 误入一家即将打烊的咖啡馆&#10;- 时间：凌晨一点&#10;- 氛围：温暖昏黄的灯光，外面下着小雨&#10;- 与 {{user}} 的关系：素不相识的客人"></textarea>
+          </div>
+        </div>
+
+        <!-- 详细模式 -->
+        <div v-if="cardForm.greetingMode === 'detailed'">
+          <div class="form-group">
+            <label>具体场景</label>
+            <input v-model="cardForm.openingSpecificScene" class="form-control" placeholder="例如：{{user}} 在雨夜推开了一家不在地图上的咖啡馆的门">
+          </div>
+          <div class="form-grid-2col">
+            <div class="form-group">
+              <label>时间</label>
+              <input v-model="cardForm.openingTime" class="form-control" placeholder="例如：凌晨一点，雨夜">
+            </div>
+            <div class="form-group">
+              <label>地点</label>
+              <input v-model="cardForm.openingLocation" class="form-control" placeholder="例如：老城区深巷的咖啡馆「月隐」">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>天气/氛围</label>
+            <input v-model="cardForm.openingAtmosphere" class="form-control" placeholder="例如：温暖而微妙，总觉得哪里不对劲">
+          </div>
+          <div class="form-group">
+            <label v-pre>与 {{user}} 的关系</label>
+            <input v-model="cardForm.openingUserRelation" class="form-control" placeholder="例如：临时组队的搭档、初次见面、雇佣关系">
+          </div>
+          <div class="form-group">
+            <label>初始情境/冲突</label>
+            <textarea v-model="cardForm.openingInitialConflict" class="form-control" placeholder="例如：&#10;- {{user}} 手机导航莫名其妙把自己带到了这里&#10;- 店里只有老板娘一人，但明明听到了第二个声音&#10;- 点的咖啡味道让人想起从未去过的地方"></textarea>
+          </div>
+          <div class="form-group">
+            <label>补充说明</label>
+            <textarea v-model="cardForm.openingNotes" class="form-control" placeholder="其他开场白相关的说明、想法等"></textarea>
+          </div>
+        </div>
+
+        <!-- 开场白美化 -->
+        <div class="form-group" style="margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px;">
+          <label class="toggle-label">
+            <input type="checkbox" v-model="cardForm.needGreetingBeautify" class="toggle-checkbox">
+            <span><svg class="lucide" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-palette"/></svg> 美化开场界面</span>
+          </label>
+          <p class="form-hint-block">将纯文本开场白转化为精美的 HTML 界面，在酒馆中以可视化方式展示。</p>
+        </div>
+
+        <div v-if="cardForm.needGreetingBeautify" class="status-bar-config">
+          <!-- 风格选择 -->
+          <div class="form-group">
+            <label>风格</label>
+            <div class="style-pills">
+              <span v-for="s in ['简约','毛玻璃','赛博朋克','RPG','可爱','暗黑','新拟物','和风']" :key="s"
+                class="style-pill" :class="{ active: cardForm.greetingBeautifyStyle === s }"
+                @click="cardForm.greetingBeautifyStyle = s">{{ s }}</span>
+            </div>
+          </div>
+
+          <!-- 配色选择 -->
+          <div class="form-group">
+            <label>配色</label>
+            <div class="style-pills">
+              <span v-for="c in ['冷色','暖色','莫兰迪','霓虹','森系','樱花','自定义']" :key="c"
+                class="style-pill" :class="{ active: cardForm.greetingBeautifyColor === c }"
+                @click="cardForm.greetingBeautifyColor = c">
+                <span class="color-dot" :style="{ background: colorDotMap[c] || '#888' }"></span>{{ c }}
+              </span>
+            </div>
+            <div v-if="cardForm.greetingBeautifyColor === '自定义'" class="custom-color-inputs">
+              <label>主色 <input type="color" v-model="cardForm.greetingBeautifyCustomPrimary"></label>
+              <label>强调色 <input type="color" v-model="cardForm.greetingBeautifyCustomAccent"></label>
+            </div>
+          </div>
+
+          <!-- 视觉效果 -->
+          <div class="form-group">
+            <label>视觉效果</label>
+            <div class="checkbox-group">
+              <label class="checkbox-item" v-for="eff in ['渐入动画','场景标题栏','引用框样式','段落首字下沉']" :key="eff">
+                <input type="checkbox" :value="eff" v-model="cardForm.greetingBeautifyEffects">
+                <span>{{ eff }}</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- 补充需求 -->
+          <div class="form-group">
+            <label>美化补充需求（可选）</label>
+            <textarea v-model="cardForm.greetingBeautifyNotes" class="form-control" placeholder="对开场白美化的其他要求或补充说明..."></textarea>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn btn-ghost" @click="createStep = 2">← 上一步</button>
+          <button class="btn btn-primary" @click="generateStep('greeting')" :disabled="generating">
+            {{ generating ? '生成中...' : '生成开场白' }}
+          </button>
+          <!-- 美化按钮：只有开了美化 && 有开场白结果时才显示 -->
+          <button v-if="cardForm.needGreetingBeautify && results.greeting" class="btn btn-secondary" @click="generateStep('greeting-beautify')" :disabled="generating">
+            {{ generating ? '生成中...' : '美化开场界面' }}
+          </button>
+          <button class="btn btn-ghost" @click="createStep = 4">跳过 →</button>
+        </div>
+      </div>
+
+      <!-- ==================== Step 4: 玩家角色 ==================== -->
+      <div v-if="createStep === 4" class="form-card glass">
+        <h3><svg class="lucide" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-gamepad-2"/></svg> 玩家角色（可选）</h3>
+
+        <div class="form-group">
+          <label class="toggle-label">
+            <input type="checkbox" v-model="cardForm.needPlayer" class="toggle-checkbox">
+            <span>是否需要玩家设定</span>
+          </label>
+        </div>
+
+        <div v-if="cardForm.needPlayer">
+          <div class="form-group">
+            <label>设定深度</label>
+            <div class="radio-group">
+              <label class="radio-item">
+                <input type="radio" v-model="cardForm.playerDepth" value="极简设定（最大自由度）"> 极简设定（最大自由度）
+              </label>
+              <label class="radio-item">
+                <input type="radio" v-model="cardForm.playerDepth" value="简化设定（有基本框架）"> 简化设定（有基本框架）
+              </label>
+              <label class="radio-item">
+                <input type="radio" v-model="cardForm.playerDepth" value="完整设定（明确背景和性格）"> 完整设定（明确背景和性格）
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>玩家角色大纲</label>
+            <textarea v-model="cardForm.playerOutline" class="form-control textarea-lg" placeholder="描述玩家角色的基本信息，例如：&#10;- 身份：深夜加班回家的普通上班族&#10;- 背景：最近总是做奇怪的梦&#10;- 特点：方向感极差，但直觉很准"></textarea>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn btn-ghost" @click="createStep = 3">← 上一步</button>
+          <button class="btn btn-primary" @click="createStep = 5">下一步 →</button>
+        </div>
+      </div>
+
+      <!-- ==================== Step 5: 变量系统 & 状态栏 ==================== -->
+      <div v-if="createStep === 5" class="form-card glass">
+        <h3><svg class="lucide" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-bar-chart-3"/></svg> 变量系统 & 状态栏</h3>
+
+        <!-- ① 变量系统选择 -->
+        <div class="form-group">
+          <label>变量系统</label>
+          <div class="card-type-radios">
+            <label class="radio-item">
+              <input type="radio" v-model="cardForm.cardType" value="nonmvu"> 不使用变量系统（非 MVU）
+            </label>
+            <label class="radio-item">
+              <input type="radio" v-model="cardForm.cardType" value="mvuzod"> MVU Zod 变量系统
+            </label>
+          </div>
+          <p class="form-hint-block" v-if="cardForm.cardType === 'nonmvu'">纯角色卡，不包含变量追踪系统。</p>
+          <p class="form-hint-block" v-if="cardForm.cardType === 'mvuzod'">MVU 是一个变量管理框架，用于实现角色和世界的动态性。使角色和世界能够根据故事进展展现不同的行为模式和状态。</p>
+        </div>
+
+        <!-- MVU Zod 相关字段（仅 mvuzod 模式显示） -->
+        <div v-if="cardForm.cardType === 'mvuzod'">
+          <!-- 组件选择 -->
+          <div class="form-group">
+            <label>组件选择（可多选）</label>
+            <div class="checkbox-group">
+              <label class="checkbox-item">
+                <input type="checkbox" v-model="cardForm.mvuComponents" value="MVU核心组件（1.0-3.2）">
+                <span>MVU核心组件（1.0-3.2）</span>
+              </label>
+              <p class="checkbox-sub-desc">包含：变量结构设计、变量初始化、变量更新规则、变量列表、变量输出格式</p>
+              <label class="checkbox-item">
+                <input type="checkbox" v-model="cardForm.mvuComponents" value="分阶段角色设定">
+                <span>分阶段角色设定</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" v-model="cardForm.mvuComponents" value="动态世界内容">
+                <span>动态世界内容</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" v-model="cardForm.mvuComponents" value="HTML状态栏">
+                <span>HTML状态栏</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- 变量管理 -->
+          <div class="form-group">
+            <label>需要追踪的变量</label>
+            <div class="variables-container">
+              <div class="variable-card" v-for="(v, idx) in cardForm.mvuVariables" :key="idx">
+                <div class="variable-name-group">
+                  <input v-model="v.name" class="form-control" placeholder="变量名（例如：好感度）">
+                </div>
+                <div class="variable-desc-group">
+                  <textarea v-model="v.desc" class="form-control variable-desc-textarea" placeholder="说明/要求（例如：数值范围 0-100，影响角色对话风格）"></textarea>
+                </div>
+                <div class="variable-actions">
+                  <button class="btn btn-sm btn-danger" @click="removeVariable(idx)" v-if="cardForm.mvuVariables.length > 1">✕</button>
+                </div>
+              </div>
+            </div>
+            <div class="variable-buttons">
+              <button class="btn btn-sm btn-secondary" @click="addVariable"><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-plus"/></svg> 添加变量</button>
+              <button class="btn btn-sm btn-success" @click="loadPresetVariables"><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-clipboard-list"/></svg> 加载预设变量</button>
+              <button class="btn btn-sm btn-danger" @click="clearAllVariables"><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-trash-2"/></svg> 清空所有</button>
+            </div>
+          </div>
+
+          <!-- 分阶段角色设定 -->
+          <div class="form-group">
+            <label>分阶段角色设定说明</label>
+            <textarea v-model="cardForm.mvuStageSettings" class="form-control" placeholder="描述角色在不同阶段的行为变化，例如：&#10;- 好感度 0-30：冷淡，对话简短&#10;- 好感度 31-60：开始友好&#10;- 好感度 61-80：信任玩家&#10;- 好感度 81-100：完全信任"></textarea>
+          </div>
+
+          <!-- 动态世界内容 -->
+          <div class="form-group">
+            <label>动态世界内容说明</label>
+            <textarea v-model="cardForm.mvuDynamicWorld" class="form-control" placeholder="描述世界内容如何随变量变化，例如：&#10;- 时间为白天：街道繁忙&#10;- 时间为夜晚：街道空旷&#10;- 故事阶段为第二章：城市进入戒严状态"></textarea>
+          </div>
+
+          <!-- HTML 状态栏 -->
+          <div class="form-group">
+            <label>HTML 状态栏显示需求</label>
+            <textarea v-model="cardForm.mvuHtmlDisplay" class="form-control" placeholder="描述需要在状态栏显示的内容，例如：&#10;- 显示好感度进度条&#10;- 显示当前故事章节&#10;- 显示时间和天气"></textarea>
+          </div>
+
+          <!-- 其他特殊说明 -->
+          <div class="form-group">
+            <label>其他特殊说明</label>
+            <textarea v-model="cardForm.mvuNotes" class="form-control" placeholder="其他 MVU 系统相关的补充说明"></textarea>
+          </div>
+        </div>
+
+        <!-- ② 状态栏开关（独立，和变量系统无关） -->
+        <div class="form-group" style="margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px;">
+          <label class="toggle-label">
+            <input type="checkbox" v-model="cardForm.needStatusBar" class="toggle-checkbox">
+            <span><svg class="lucide" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-palette"/></svg> 独立状态栏（HTML）</span>
+          </label>
+          <p class="form-hint-block">无论是否使用 MVU，都可以为角色卡添加一个可视化状态栏。</p>
+        </div>
+
+        <div v-if="cardForm.needStatusBar" class="status-bar-config">
+          <!-- 风格选择 -->
+          <div class="form-group">
+            <label>风格</label>
+            <div class="style-pills">
+              <span v-for="s in ['简约','毛玻璃','赛博朋克','RPG','可爱','暗黑','新拟物','和风']" :key="s"
+                class="style-pill" :class="{ active: cardForm.statusBarStyle === s }"
+                @click="cardForm.statusBarStyle = s">{{ s }}</span>
+            </div>
+          </div>
+
+          <!-- 配色选择 -->
+          <div class="form-group">
+            <label>配色</label>
+            <div class="style-pills">
+              <span v-for="c in ['冷色','暖色','莫兰迪','霓虹','森系','樱花','自定义']" :key="c"
+                class="style-pill" :class="{ active: cardForm.statusBarColor === c }"
+                @click="cardForm.statusBarColor = c">
+                <span class="color-dot" :style="{ background: colorDotMap[c] || '#888' }"></span>{{ c }}
+              </span>
+            </div>
+            <div v-if="cardForm.statusBarColor === '自定义'" class="custom-color-inputs">
+              <label>主色 <input type="color" v-model="cardForm.statusBarCustomPrimary"></label>
+              <label>强调色 <input type="color" v-model="cardForm.statusBarCustomAccent"></label>
+            </div>
+          </div>
+
+          <!-- 版块选择 -->
+          <div class="form-group">
+            <label>版块</label>
+            <div class="checkbox-group">
+              <label class="checkbox-item" v-for="sec in statusBarSectionOptions" :key="sec.value">
+                <input type="checkbox" :value="sec.value" v-model="cardForm.statusBarSections">
+                <span>{{ sec.label }}</span>
+              </label>
+            </div>
+            <div v-if="cardForm.statusBarSections.includes('自定义')" style="margin-top: 8px;">
+              <textarea v-model="cardForm.statusBarCustomSection" class="form-control" placeholder="描述你的自定义版块内容..."></textarea>
+            </div>
+          </div>
+
+          <!-- 额外效果 -->
+          <div class="form-group">
+            <label>额外效果</label>
+            <div class="checkbox-group">
+              <label class="checkbox-item" v-for="eff in ['折叠/展开','悬停详情','进度条动画','渐入动画']" :key="eff">
+                <input type="checkbox" :value="eff" v-model="cardForm.statusBarEffects">
+                <span>{{ eff }}</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- 状态栏补充需求 -->
+          <div class="form-group">
+            <label>状态栏补充需求（可选）</label>
+            <textarea v-model="cardForm.statusBarNotes" class="form-control" placeholder="对状态栏的其他要求或补充说明..."></textarea>
+          </div>
+        </div>
+
+        <!-- 底部按钮 -->
+        <div class="form-actions">
+          <button class="btn btn-ghost" @click="createStep = 4">← 上一步</button>
+          <button v-if="cardForm.cardType === 'mvuzod'" class="btn btn-primary" @click="generateStep('mvu')" :disabled="generating">
+            {{ generating ? '生成中...' : 'AI 设计变量系统' }}
+          </button>
+          <button v-if="cardForm.cardType === 'mvuzod' && results.mvu" class="btn btn-primary" @click="generateStep('mvu-statusbar')" :disabled="generating">
+            {{ generating ? '生成中...' : '<svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><use href="#lucide-sparkles"/></svg> AI 设计 MVU 状态栏' }}
+          </button>
+          <button v-else-if="cardForm.needStatusBar" class="btn btn-primary" @click="generateStep('status-bar')" :disabled="generating">
+            {{ generating ? '生成中...' : 'AI 设计状态栏' }}
+          </button>
+          <button v-else class="btn btn-primary" @click="createStep = 6">跳到下一步</button>
+          <button class="btn btn-ghost" @click="createStep = 6">跳过 →</button>
+        </div>
+      </div>
+      <!-- ==================== Step 6: 额外选项 ==================== -->
+      <div v-if="createStep === 6" class="form-card glass">
+        <h3><svg class="lucide" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-paperclip"/></svg> 额外选项（可选）</h3>
+
+        <!-- 对话补充 -->
+        <div class="toggle-section">
+          <h4 class="toggle-section-title" @click="toggleExtra.dialogue = !toggleExtra.dialogue">
+            <span><svg class="lucide" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-message-circle"/></svg> 对话补充</span>
+            <span class="toggle-icon">{{ toggleExtra.dialogue ? '▾' : '▸' }}</span>
+          </h4>
+          <div v-if="toggleExtra.dialogue" class="toggle-section-content">
+            <div class="form-group">
+              <label>对应角色</label>
+              <select v-model="cardForm.dialogueCharacter" class="form-control">
+                <option value="">请选择角色</option>
+                <option v-for="n in characterNameList" :key="n" :value="n">{{ n }}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>场景需求</label>
+              <textarea v-model="cardForm.dialogueScenes" class="form-control" placeholder="例如：日常闲聊、紧张时刻、战斗场景、亲密互动、情绪波动"></textarea>
+            </div>
+            <button class="btn btn-secondary btn-sm" @click="generateStep('dialogue')" 
+              :disabled="generating || !results.character" style="margin-top: 8px">
+              <svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><use href="#lucide-sparkles"/></svg> AI 生成对话样本
+            </button>
+            <p v-if="!results.character" class="form-hint" style="margin-top:4px;color:var(--text-dim);font-size:12px">
+              需要先生成角色描述
+            </p>
+            <div v-if="extraGenDone.dialogue" style="margin-top:8px">
+              <p class="form-hint" style="color:var(--accent-purple);font-size:12px"><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><use href="#lucide-check-circle"/></svg> 已添加为世界书条目</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 角色采访 -->
+        <div class="toggle-section">
+          <h4 class="toggle-section-title" @click="toggleExtra.interview = !toggleExtra.interview">
+            <span><svg class="lucide" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-mic"/></svg> 角色采访</span>
+            <span class="toggle-icon">{{ toggleExtra.interview ? '▾' : '▸' }}</span>
+          </h4>
+          <div v-if="toggleExtra.interview" class="toggle-section-content">
+            <div class="form-group">
+              <label>对应角色</label>
+              <select v-model="cardForm.interviewCharacter" class="form-control">
+                <option value="">请选择角色</option>
+                <option v-for="n in characterNameList" :key="n" :value="n">{{ n }}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>采访主题</label>
+              <textarea v-model="cardForm.interviewTopics" class="form-control" placeholder="列出想要深入探讨的主题或问题，例如：&#10;1. 她的能力是什么时候觉醒的&#10;2. 外婆日记最后一页写了什么&#10;3. 那些深夜来店里的奇怪客人到底是谁"></textarea>
+            </div>
+            <button class="btn btn-secondary btn-sm" @click="generateStep('interview')" 
+              :disabled="generating || !results.character" style="margin-top: 8px">
+              <svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><use href="#lucide-sparkles"/></svg> AI 生成角色深访
+            </button>
+            <p v-if="!results.character" class="form-hint" style="margin-top:4px;color:var(--text-dim);font-size:12px">
+              需要先生成角色描述
+            </p>
+            <div v-if="extraGenDone.interview" style="margin-top:8px">
+              <p class="form-hint" style="color:var(--accent-purple);font-size:12px"><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><use href="#lucide-check-circle"/></svg> 已添加为世界书条目</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 额外需求 -->
+        <div class="toggle-section">
+          <h4 class="toggle-section-title" @click="toggleExtra.extra = !toggleExtra.extra">
+            <span><svg class="lucide" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-pen-line"/></svg> 额外需求</span>
+            <span class="toggle-icon">{{ toggleExtra.extra ? '▾' : '▸' }}</span>
+          </h4>
+          <div v-if="toggleExtra.extra" class="toggle-section-content">
+            <div class="form-group" v-if="characterNameList.length > 1">
+              <label>补充目标角色</label>
+              <select v-model="cardForm.extraCharacter" class="form-control">
+                <option value="">默认主角色</option>
+                <option v-for="n in characterNameList" :key="n" :value="n">{{ n }}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>特殊要求或补充说明</label>
+              <textarea v-model="cardForm.extraRequirements" class="form-control textarea-lg" placeholder="在这里填写任何额外的要求、想法或注意事项，例如：&#10;- 角色对话要有明显的口音或口头禅&#10;- 某些禁忌话题或敏感设定&#10;- 想要的叙事风格（严肃/轻松/黑暗/幽默等）"></textarea>
+            </div>
+            <div class="form-group" style="margin-top:-4px">
+              <label style="font-size:12px;color:var(--text-dim)">快捷补全</label>
+              <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px">
+                <button type="button" class="btn btn-ghost btn-sm" @click="appendExtraReq('请补充这个角色的语言习惯、口头禅、语气变化和情绪波动时的表达方式。')">语言习惯</button>
+                <button type="button" class="btn btn-ghost btn-sm" @click="appendExtraReq('请补充这个角色在暧昧、冲突、被质疑、被夸奖时的互动规则与反应逻辑。')">互动规则</button>
+                <button type="button" class="btn btn-ghost btn-sm" @click="appendExtraReq('请补充这个角色在特殊场景中的处理方式，例如醉酒、受伤、吃醋、失控、撒娇、失眠。')">特殊场景</button>
+                <button type="button" class="btn btn-ghost btn-sm" @click="appendExtraReq('请补充容易遗漏但会显著提升代入感的细节，例如小动作、习惯、禁忌、偏好、边界感。')">代入感细节</button>
+              </div>
+            </div>
+            <button class="btn btn-secondary btn-sm" @click="generateStep('extra-requirements')" 
+              :disabled="generating || !results.character" style="margin-top: 8px">
+              <svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><use href="#lucide-sparkles"/></svg> AI 生成补充设定
+            </button>
+            <p v-if="!results.character" class="form-hint" style="margin-top:4px;color:var(--text-dim);font-size:12px">
+              需要先生成角色描述
+            </p>
+            <div v-if="extraGenDone['extra-requirements']" style="margin-top:8px">
+              <p class="form-hint" style="color:var(--accent-purple);font-size:12px"><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><use href="#lucide-check-circle"/></svg> 已生成补充设定并添加到世界书</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 导入卡正则脚本预览 -->
+        <div class="regex-import-preview" v-if="importedRegexScripts.length > 0">
+          <h4 style="margin:16px 0 8px 0; color: var(--text-dim)"><svg class="lucide" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><use href="#lucide-clipboard-list"/></svg> 正则脚本预览 ({{ importedRegexScripts.length }})</h4>
+          <div class="regex-preview-list">
+            <div class="regex-preview-card" v-for="(rs, ri) in importedRegexScripts" :key="ri">
+              <div class="regex-preview-header">
+                <span class="regex-preview-name">{{ rs.scriptName || '未命名脚本' }}</span>
+                <span class="regex-preview-badge" :class="rs.disabled ? 'badge-disabled' : 'badge-enabled'">
+                  {{ rs.disabled ? '已禁用' : '启用' }}
+                </span>
+                <span v-if="isRenderableRegex(rs)" class="regex-preview-badge badge-render">可预览</span>
+              </div>
+
+              <div v-if="isRenderableRegex(rs)" class="regex-preview-iframe-wrap">
+                <iframe class="regex-preview-iframe"
+                  :srcdoc="getRegexLiveSrcdoc('import', ri)"
+                  sandbox="allow-scripts allow-same-origin"
+                  :ref="el => { if(el) setupRegexIframeResize(el) }"
+                  scrolling="no"
+                ></iframe>
+              </div>
+
+              <div class="regex-preview-actions">
+                <button class="btn btn-ghost btn-sm" @click="toggleRegexSource('import', ri)">
+                  {{ getRegexPanel('import', ri).showSource ? '收起源码' : '查看源码' }}
+                </button>
+                <template v-if="isRenderableRegex(rs)">
+                  <button class="btn btn-outline btn-sm" @click="toggleRegexStylePanel('import', ri)">
+                    <span v-if="getRegexPanel('import', ri).showStyle">收起定制</span><span v-else><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><use href="#lucide-palette"/></svg> 定制样式</span>
+                  </button>
+                  <button class="btn btn-outline btn-sm" @click="toggleRegexAIPanel('import', ri)">
+                    <span v-if="getRegexPanel('import', ri).showAI">收起AI</span><span v-else><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><use href="#lucide-sparkles"/></svg> AI 重写</span>
+                  </button>
+                </template>
+              </div>
+
+              <div v-if="getRegexPanel('import', ri).showSource" class="regex-source-panel">
+                <div><strong>findRegex:</strong> <code>{{ rs.findRegex }}</code></div>
+                <div><strong>replaceString:</strong> <pre class="card-editor-pre">{{ rs.replaceString }}</pre></div>
+              </div>
+
+              <!-- Quick Style Panel -->
+              <div v-if="getRegexPanel('import', ri).showStyle" class="regex-style-panel glass">
+                <h4><svg class="lucide" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><use href="#lucide-palette"/></svg> 快速配色</h4>
+                <div class="regex-preset-row">
+                  <span class="regex-preset-label">预设：</span>
+                  <div class="regex-pill-group">
+                    <span v-for="(_, pName) in regexStylePresets" :key="pName"
+                      class="regex-pill-option" :class="{ selected: getRegexPanel('import', ri).presetName === pName }"
+                      @click="applyRegexPreset('import', ri, pName)">
+                      {{ pName }}
+                    </span>
+                  </div>
+                </div>
+                <div class="regex-vars-list" v-if="getRegexPanel('import', ri).cssVars.length">
+                  <div class="regex-var-row" v-for="(v, vi) in getRegexPanel('import', ri).cssVars" :key="v.name">
+                    <span class="regex-var-label">{{ v.label }}</span>
+                    <span class="regex-var-swatch" :style="{ background: v.value }"></span>
+                    <input type="text" class="regex-var-input" :value="v.value"
+                      @input="updateRegexCSSVar('import', ri, vi, $event.target.value)">
+                    <input v-if="v.value.match(/^#[0-9a-fA-F]{3,8}$/) || v.value.match(/^rgb/)" type="color"
+                      class="regex-var-color-picker"
+                      :value="v.value.startsWith('#') ? v.value : ''"
+                      @input="updateRegexCSSVar('import', ri, vi, $event.target.value)">
+                  </div>
+                </div>
+                <div v-else class="regex-no-vars">未检测到 CSS 自定义属性</div>
+                <div class="regex-style-actions">
+                  <button class="btn btn-primary btn-sm" @click="applyRegexCSSChanges('import', ri)"><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><use href="#lucide-check-circle"/></svg> 应用</button>
+                  <button class="btn btn-ghost btn-sm" @click="resetRegexCSSChanges('import', ri)">↩ 重置</button>
+                </div>
+              </div>
+
+              <!-- AI Rewrite Panel -->
+              <div v-if="getRegexPanel('import', ri).showAI" class="regex-ai-panel glass">
+                <h4><svg class="lucide" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><use href="#lucide-sparkles"/></svg> AI 样式重写</h4>
+                <div class="regex-ai-section">
+                  <label>风格</label>
+                  <div class="regex-pill-group">
+                    <span v-for="s in regexAIStyleOptions" :key="s"
+                      class="regex-pill-option" :class="{ selected: regexCustomize.aiStyles.includes(s) }"
+                      @click="toggleRegexAIOption(regexCustomize.aiStyles, s)">{{ s }}</span>
+                  </div>
+                </div>
+                <div class="regex-ai-section">
+                  <label>配色</label>
+                  <div class="regex-pill-group">
+                    <span v-for="c in regexAIColorOptions" :key="c"
+                      class="regex-pill-option" :class="{ selected: regexCustomize.aiColors.includes(c) }"
+                      @click="toggleRegexAIOption(regexCustomize.aiColors, c)">{{ c }}</span>
+                  </div>
+                </div>
+                <div class="regex-ai-section">
+                  <label>元素</label>
+                  <div class="regex-pill-group">
+                    <span v-for="el in regexAIElementOptions" :key="el"
+                      class="regex-pill-option" :class="{ selected: regexCustomize.aiElements.includes(el) }"
+                      @click="toggleRegexAIOption(regexCustomize.aiElements, el)">{{ el }}</span>
+                  </div>
+                </div>
+                <div class="regex-ai-section">
+                  <label>其他要求</label>
+                  <textarea class="form-control" v-model="regexCustomize.aiCustomRequest"
+                    placeholder="自由描述你想要的效果..." rows="2"></textarea>
+                </div>
+                <div class="regex-ai-actions">
+                  <button class="btn btn-primary btn-sm" @click="startRegexAIRewrite('import', ri)"
+                    :disabled="regexCustomize.aiGenerating">
+                    <span v-if="regexCustomize.aiGenerating">生成中...</span><span v-else><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><use href="#lucide-zap"/></svg> 生成</span>
+                  </button>
+                </div>
+                <div v-if="regexCustomize.aiGenerating" class="regex-ai-stream">
+                  <pre>{{ regexCustomize.aiStreamOutput }}</pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn btn-ghost" @click="createStep = 5">← 上一步</button>
+          <button class="btn btn-primary" @click="createStep = 7">下一步 →</button>
+        </div>
+      </div>
+
+      <!-- ==================== Step 7: 封面 & 打包 ==================== -->
+      <div v-if="createStep === 7" class="form-card glass">
+        <h3><svg class="lucide" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-palette"/></svg> 封面 & 打包</h3>
+
+        <div class="cover-section">
+          <div class="cover-preview">
+            <img v-if="coverPreview" :src="coverPreview" alt="封面预览">
+            <div v-else class="cover-placeholder">
+              <span>暂无封面</span>
+            </div>
+          </div>
+          <div class="cover-controls">
+            <div class="form-group">
+              <label>封面图片提示词（Danbooru tag 格式更佳）</label>
+              <textarea v-model="cardForm.coverPrompt" class="form-control" placeholder="1girl, silver hair, blue eyes, cyberpunk, neon lights..."></textarea>
+              <button class="btn btn-ghost btn-sm" style="margin-top:4px" @click="generateCoverTags" :disabled="generatingTags">
+                {{ generatingTags ? '生成中...' : 'AI 生成 Tag' }}
+              </button>
+            </div>
+            <div class="form-group">
+              <label>选择图片 AI</label>
+              <select v-model="cardForm.imageKeyId" class="form-control">
+                <option value="">自动选择</option>
+                <option v-for="k in imageAIKeys" :key="k.id" :value="k.id">{{ k.label || providerLabel(k.provider) }}</option>
+              </select>
+            </div>
+            <button class="btn btn-secondary" @click="generateCover" :disabled="generatingCover">
+              {{ generatingCover ? '生成中...' : 'AI 生成封面' }}
+            </button>
+            <div class="upload-area">
+              <label class="btn btn-ghost btn-sm">
+                <svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-upload"/></svg> 或上传图片
+                <input type="file" accept="image/png,image/jpeg" @change="uploadCover" hidden>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn btn-ghost" @click="createStep = 6">← 上一步</button>
+          <button class="btn btn-primary btn-lg" @click="finalizeCard" :disabled="finalizing">
+            {{ finalizing ? '打包中...' : (coverBase64 ? '生成角色卡 PNG' : '导出角色卡 JSON') }}
+          </button>
+        </div>
+      </div>
+
+      <!-- Generation output -->
+      <div v-if="streamOutput" class="output-card glass">
+        <div class="output-header">
+          <h4>{{ stepLabels[currentGenStep] || 'AI 输出' }}</h4>
+          <span class="output-status" :class="{ done: !generating }">{{ generating ? '生成中...' : '完成' }}</span>
+        </div>
+        <!-- 多角色生成进度 -->
+        <div v-if="characterProgress.total > 1" style="padding:8px 16px;background:var(--glass-bg);border-bottom:1px solid var(--glass-border);font-size:0.9em;color:var(--primary)">
+          <svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><use href="#lucide-drama"/></svg> 正在生成角色 {{ characterProgress.current }}/{{ characterProgress.total }}：<strong>{{ characterProgress.charName }}</strong>
+        </div>
+        <div class="output-content markdown-body" v-html="renderedOutput"></div>
+      </div>
+
+      <!-- Previous results preview -->
+      <div v-if="hasAnyResult" class="results-preview glass">
+        <div class="results-preview-header">
+          <h4>已生成的内容预览</h4>
+          <div style="display:flex;gap:6px">
+            <button v-if="results[previewTab] && previewTab !== 'worldbook'" class="btn btn-sm btn-ghost" @click="generateStep(previewTab)" :disabled="generating" title="重新生成当前内容">
+              <svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><use href="#lucide-refresh-cw"/></svg> 重新生成
+            </button>
+            <button v-if="results[previewTab] && previewTab !== 'worldbook'" class="btn btn-sm" :class="editingResult === previewTab ? 'btn-primary' : 'btn-ghost'" @click="toggleEditResult()">
+              {{ editingResult === previewTab ? '完成编辑' : '编辑' }}
+            </button>
+          </div>
+        </div>
+        <div class="result-tabs">
+          <button v-for="(r, key) in results" :key="key" v-if="r" class="tab-btn" :class="{ active: previewTab === key }" @click="previewTab = key; editingResult = null">
+            {{ stepLabels[key] }}
+          </button>
+        </div>
+        <!-- Worldbook Entry Editor -->
+        <div v-if="previewTab === 'worldbook' && results.worldbook" class="wb-editor">
+          <div class="wb-toolbar">
+            <span class="wb-toolbar-info">共 {{ worldbookEntries.length }} 个条目</span>
+            <div style="display:flex;gap:6px;flex-wrap:wrap">
+              <button class="btn btn-sm btn-secondary" @click="addWorldbookEntry">+ 新增条目</button>
+              <button class="btn btn-sm btn-ghost" @click="parseWorldbookFromMarkdownSafe" title="从 markdown 重新解析">重新解析</button>
+            </div>
+          </div>
+          <div class="wb-entries">
+            <div class="wb-entry-card" v-for="(entry, idx) in worldbookEntries" :key="entry.id">
+              <div class="wb-entry-header">
+                <input class="wb-entry-name" v-model="entry.name" placeholder="条目名称" @input="syncWorldbookToMarkdown">
+                <button class="wb-type-toggle" :class="'wb-type-' + entry.type" @click="toggleEntryType(entry)" :title="entry.type === 'green' ? '关键词触发' : '常驻'">
+                  <span class="wb-type-dot"></span>
+                  {{ entry.type === 'green' ? '关键词触发' : '常驻' }}
+                </button>
+                <label class="wb-enable-toggle">
+                  <input type="checkbox" v-model="entry.enabled" @change="syncWorldbookToMarkdown">
+                  {{ entry.enabled ? '启用' : '禁用' }}
+                </label>
+                <button class="wb-delete-btn" @click="removeWorldbookEntry(idx)">✕</button>
+              </div>
+              <textarea class="wb-entry-content" v-model="entry.content" placeholder="条目内容..." @input="syncWorldbookToMarkdown" :ref="'wbContent_' + idx"></textarea>
+              <div class="wb-ejs-row" v-if="cardForm.cardType === 'mvuzod'">
+                <button class="btn btn-ghost btn-xs" @click="entry._showEjs = !entry._showEjs" style="font-size:11px;padding:2px 8px">
+                  <svg class="lucide" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:2px"><use href="#lucide-code"/></svg>
+                  {{ entry._showEjs ? '收起 EJS' : '插入 EJS 条件' }}
+                </button>
+                <div v-if="entry._showEjs" class="wb-ejs-panel glass" style="margin-top:6px;padding:8px 10px;border-radius:8px;font-size:12px">
+                  <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:6px">
+                    <select v-if="namedMvuVariables.length > 0" v-model="entry._ejsVar" class="form-control" style="width:140px;font-size:12px;padding:3px 6px">
+                      <option value="">选择变量</option>
+                      <option v-for="v in namedMvuVariables" :key="v.name" :value="v.name">{{ v.name }}{{ v.desc ? ' — ' + v.desc : '' }}</option>
+                      <option value="__custom__">✏️ 自定义...</option>
+                    </select>
+                    <input v-if="!namedMvuVariables.length || entry._ejsVar === '__custom__'" v-model="entry._ejsVarCustom" class="form-control" placeholder="变量名（如：好感度）" style="width:120px;font-size:12px;padding:3px 6px">
+                    <select v-model="entry._ejsOp" class="form-control" style="width:60px;font-size:12px;padding:3px 4px">
+                      <option value=">=">≥</option>
+                      <option value="<=">≤</option>
+                      <option value=">">></option>
+                      <option value="<">&lt;</option>
+                      <option value="===">＝</option>
+                      <option value="!==">≠</option>
+                    </select>
+                    <input v-model="entry._ejsVal" class="form-control" placeholder="值" style="width:70px;font-size:12px;padding:3px 6px">
+                    <button class="btn btn-secondary btn-xs" @click="insertEjsCondition(idx)" style="font-size:11px;padding:2px 8px">插入</button>
+                  </div>
+                  <!-- EJS 实时预览 -->
+                  <div v-if="(entry._ejsVar && entry._ejsVar !== '__custom__') || entry._ejsVarCustom" style="margin:6px 0;padding:6px 8px;background:rgba(100,126,234,0.08);border-radius:6px;font-family:'Fira Code',Consolas,monospace;font-size:11px;line-height:1.6;color:var(--text-secondary);word-break:break-all">
+                    <div style="color:var(--text-dim);margin-bottom:2px">预览：</div>
+                    <code>{{ ejsPreviewCode(entry) }}</code><br>
+                    <span style="color:var(--accent-purple)">↳ 满足条件时显示的内容</span><br>
+                    <code>&lt;% } else { %&gt;</code><br>
+                    <span style="color:var(--text-dim)">↳ 不满足时显示的内容</span><br>
+                    <code>&lt;% } %&gt;</code>
+                  </div>
+                  <div v-else style="color:var(--text-dim);line-height:1.5">
+                    选择一个变量，设置条件，即可预览生成的 EJS 代码
+                  </div>
+                </div>
+              </div>
+              <div class="wb-keywords-row">
+                <span class="wb-keywords-label">关键词：</span>
+                <input class="wb-keywords-input" :value="entry.keywords.join(', ')" @input="updateEntryKeywords(entry, $event.target.value)" placeholder="多个关键词用逗号分隔">
+              </div>
+            </div>
+          </div>
+          <div style="text-align:center;margin-top:12px">
+            <button class="btn btn-sm btn-secondary" @click="addWorldbookEntry">+ 新增条目</button>
+          </div>
+        </div>
+        <!-- Non-worldbook tabs: original editor/preview -->
+        <textarea v-else-if="editingResult === previewTab && results[previewTab]" class="form-control result-editor" v-model="results[previewTab]"></textarea>
+        <!-- HTML preview for status-bar and greeting-beautify (iframe, not markdown) -->
+        <div v-else-if="results[previewTab] && (previewTab === 'status-bar' || previewTab === 'greeting-beautify')" class="regex-preview-iframe-wrap">
+          <iframe class="regex-preview-iframe" :srcdoc="stripCodeBlock(results[previewTab])" sandbox="allow-scripts" @load="setupRegexIframeResize($event.target)"></iframe>
+        </div>
+        <div class="result-content markdown-body" v-else-if="results[previewTab]" v-html="renderMarkdown(results[previewTab])"></div>
+      </div>
+    </div>
+
+    <!-- My Cards -->
+    <div v-if="user.loggedIn && currentView === 'cards'" class="page-content fade-in">
+      <div class="page-header">
+        <h2><svg class="lucide" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-book-open"/></svg> 我的卡片</h2>
+        <p>查看和管理你创作的角色卡</p>
+        <div class="import-card-row">
+          <label class="btn btn-ghost btn-sm import-card-btn">
+            <svg class="lucide" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-upload"/></svg>
+            {{ importingCardToLibrary ? '导入中...' : '导入角色卡' }}
+            <input type="file" accept="image/png,.png" @change="importCardToLibrary" style="display:none" :disabled="importingCardToLibrary">
+          </label>
+          <span class="import-hint">上传 PNG 角色卡，直接保存到卡片库并编辑</span>
+        </div>
+      </div>
+
+      <div class="cards-grid" v-if="cards.length">
+        <div class="card-item glass" v-for="card in cards" :key="card.id">
+          <div class="card-cover">
+            <img :src="'/api/cards/' + card.id + '/download'" @error="$event.target.style.display='none'" alt="">
+            <div class="card-cover-fallback"><span class="brand-icon-text brand-icon-lg">欢</span></div>
+          </div>
+          <div class="card-info">
+            <h4>{{ card.name }} <span class="card-format" v-if="card.format">{{ card.format.toUpperCase() }}</span> <span class="card-version-badge" v-if="card.version">v{{ card.version }}</span></h4>
+            <p class="card-desc">{{ card.description || '暂无描述' }}</p>
+            <span class="card-date">{{ formatDate(card.created_at) }}</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-sm btn-secondary" @click="startEditCard(card.id)">编辑</button>
+            <a :href="'/api/cards/' + card.id + '/download'" class="btn btn-sm btn-primary" download>下载</a>
+            <button class="btn btn-sm btn-danger" @click="deleteCard(card.id)">删除</button>
+          </div>
+        </div>
+      </div>
+      <div v-else class="empty-state glass">
+        <div class="empty-icon"><svg class="lucide" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-book-open"/></svg></div>
+        <p>还没有创作任何角色卡</p>
+        <button class="btn btn-primary" @click="resetCreateState(); currentView = 'create'">开始创作</button>
+      </div>
+    </div>
+
+    <!-- Card Editor -->
+    <div v-if="user.loggedIn && currentView === 'card-editor'" class="page-content fade-in">
+      <div class="page-header">
+        <h2><svg class="lucide" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-edit-3"/></svg> 编辑卡片</h2>
+        <p>编辑角色卡的所有内容</p>
+      </div>
+
+      <div v-if="editorLoading" class="empty-state glass">
+        <p>加载中...</p>
+      </div>
+
+      <template v-if="!editorLoading && editorData.name !== undefined">
+        <!-- 基础信息区 -->
+        <div class="form-card glass card-editor-section">
+          <h3>基础信息</h3>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>角色名称</label>
+              <input v-model="editorData.name" class="form-control" placeholder="角色名称">
+            </div>
+            <div class="form-group">
+              <label>描述摘要</label>
+              <input v-model="editorData.description" class="form-control" placeholder="简要描述">
+            </div>
+            <div class="form-group">
+              <label>版本</label>
+              <div class="card-editor-version-display">v{{ editorData.version || 1 }}</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 角色描述区 -->
+        <div class="form-card glass card-editor-section">
+          <div class="card-editor-section-header">
+            <h3>角色描述</h3>
+            <button class="btn btn-sm btn-ghost" @click="editorDescPreview = !editorDescPreview">
+              {{ editorDescPreview ? '编辑' : '预览' }}
+            </button>
+          </div>
+          <div v-if="editorDescPreview" class="result-content markdown-body" v-html="renderMarkdown(editorData.charDescription || '')"></div>
+          <textarea v-else v-model="editorData.charDescription" class="form-control textarea-lg" placeholder="角色描述..."></textarea>
+        </div>
+
+        <!-- 开场白区 -->
+        <div class="form-card glass card-editor-section">
+          <div class="card-editor-section-header">
+            <h3>开场白</h3>
+            <button class="btn btn-sm btn-ghost" @click="editorGreetingPreview = !editorGreetingPreview">
+              {{ editorGreetingPreview ? '编辑' : '预览' }}
+            </button>
+          </div>
+          <div v-if="editorGreetingPreview" class="result-content markdown-body" v-html="renderMarkdown(editorData.firstMes || '')"></div>
+          <textarea v-else v-model="editorData.firstMes" class="form-control textarea-lg" placeholder="开场白..."></textarea>
+        </div>
+
+        <!-- 世界书编辑器 -->
+        <div class="form-card glass card-editor-section">
+          <div class="card-editor-section-header">
+            <h3>世界书条目 ({{ editorEntries.length }})</h3>
+            <button class="btn btn-sm btn-secondary" @click="addEditorEntry">+ 新增条目</button>
+          </div>
+          <div class="card-editor-entries">
+            <div class="card-editor-entry" v-for="(entry, idx) in editorEntries" :key="entry._uid">
+              <div class="card-editor-entry-header" @click="entry._collapsed = !entry._collapsed">
+                <div class="card-editor-entry-left">
+                  <span class="card-editor-entry-indicator" :class="entry.constant ? 'indicator-blue' : 'indicator-green'"></span>
+                  <span class="card-editor-entry-title">{{ entry.comment || '未命名条目' }}</span>
+                  <span class="card-editor-entry-status" v-if="!entry.enabled">[已禁用]</span>
+                </div>
+                <div class="card-editor-entry-right">
+                  <button class="btn btn-sm btn-ghost" @click.stop="moveEditorEntry(idx, -1)" :disabled="idx === 0">&#9650;</button>
+                  <button class="btn btn-sm btn-ghost" @click.stop="moveEditorEntry(idx, 1)" :disabled="idx === editorEntries.length - 1">&#9660;</button>
+                  <button class="wb-delete-btn" @click.stop="removeEditorEntry(idx)">&#10005;</button>
+                  <span class="card-editor-collapse-icon">{{ entry._collapsed ? '&#9654;' : '&#9660;' }}</span>
+                </div>
+              </div>
+              <div v-if="!entry._collapsed" class="card-editor-entry-body">
+                <div class="form-group">
+                  <label>条目名称</label>
+                  <input v-model="entry.comment" class="form-control" placeholder="条目名称">
+                </div>
+                <div class="form-group">
+                  <label>关键词（逗号分隔）</label>
+                  <input :value="(entry.keys || []).join(', ')" @input="entry.keys = $event.target.value.split(/[，,]+/).map(k => k.trim()).filter(k => k)" class="form-control" placeholder="关键词1, 关键词2">
+                </div>
+                <div class="form-group">
+                  <label>内容</label>
+                  <textarea v-model="entry.content" class="form-control" rows="6" placeholder="条目内容..."></textarea>
+                </div>
+                <div class="card-editor-entry-options">
+                  <label class="wb-enable-toggle">
+                    <input type="checkbox" v-model="entry.enabled">
+                    {{ entry.enabled ? '启用' : '禁用' }}
+                  </label>
+                  <button class="wb-type-toggle" :class="entry.constant ? 'wb-type-blue' : 'wb-type-green'" @click="entry.constant = !entry.constant">
+                    <span class="wb-type-dot"></span>
+                    {{ entry.constant ? '常驻' : '关键词触发' }}
+                  </button>
+                  <div class="card-editor-entry-pos">
+                    <label>位置：</label>
+                    <select v-model.number="entry.extensions_position" class="form-control" style="width:auto;display:inline-block;min-width:140px">
+                      <option :value="0">角色定义前</option>
+                      <option :value="1">角色定义后</option>
+                      <option :value="2">示例消息前</option>
+                      <option :value="3">示例消息后</option>
+                      <option :value="4">@ 深度嵌入</option>
+                    </select>
+                  </div>
+                  <div class="card-editor-entry-pos" v-if="entry.extensions_position === 4">
+                    <label>深度：</label>
+                    <input type="number" v-model.number="entry.depth" class="form-control" style="width:70px;display:inline-block" min="0" max="99">
+                  </div>
+                  <div class="card-editor-entry-pos">
+                    <label>角色：</label>
+                    <select v-model.number="entry.role" class="form-control" style="width:auto;display:inline-block;min-width:100px">
+                      <option :value="0">系统</option>
+                      <option :value="1">用户</option>
+                      <option :value="2">助手</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="text-align:center;margin-top:12px">
+            <button class="btn btn-sm btn-secondary" @click="addEditorEntry">+ 新增条目</button>
+          </div>
+        </div>
+
+        <!-- 正则脚本区（预览+样式定制） -->
+        <div class="form-card glass card-editor-section" v-if="editorData.regexScripts && editorData.regexScripts.length">
+          <h3>正则脚本 ({{ editorData.regexScripts.length }})</h3>
+          <div class="regex-preview-list">
+            <div class="regex-preview-card" v-for="(rs, ri) in editorData.regexScripts" :key="ri">
+              <!-- Header -->
+              <div class="regex-preview-header">
+                <span class="regex-preview-name">{{ rs.scriptName || '未命名脚本' }}</span>
+                <span class="regex-preview-badge" :class="rs.disabled ? 'badge-disabled' : 'badge-enabled'">
+                  {{ rs.disabled ? '已禁用' : '启用' }}
+                </span>
+                <span v-if="isRenderableRegex(rs)" class="regex-preview-badge badge-render">可预览</span>
+              </div>
+
+              <!-- Iframe preview (only for renderable regex) -->
+              <div v-if="isRenderableRegex(rs)" class="regex-preview-iframe-wrap">
+                <iframe class="regex-preview-iframe"
+                  :srcdoc="getRegexLiveSrcdoc('editor', ri)"
+                  sandbox="allow-scripts allow-same-origin"
+                  :ref="el => { if(el) setupRegexIframeResize(el) }"
+                  scrolling="no"
+                ></iframe>
+              </div>
+
+              <!-- Actions -->
+              <div class="regex-preview-actions">
+                <button class="btn btn-ghost btn-sm" @click="toggleRegexSource('editor', ri)">
+                  {{ getRegexPanel('editor', ri).showSource ? '收起源码' : '查看源码' }}
+                </button>
+                <template v-if="isRenderableRegex(rs)">
+                  <button class="btn btn-outline btn-sm" @click="toggleRegexStylePanel('editor', ri)">
+                    <span v-if="getRegexPanel('editor', ri).showStyle">收起定制</span><span v-else><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><use href="#lucide-palette"/></svg> 定制样式</span>
+                  </button>
+                  <button class="btn btn-outline btn-sm" @click="toggleRegexAIPanel('editor', ri)">
+                    <span v-if="getRegexPanel('editor', ri).showAI">收起AI</span><span v-else><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><use href="#lucide-sparkles"/></svg> AI 重写</span>
+                  </button>
+                </template>
+              </div>
+
+              <!-- Source code (toggle) -->
+              <div v-if="getRegexPanel('editor', ri).showSource" class="regex-source-panel">
+                <div><strong>findRegex:</strong> <code>{{ rs.findRegex }}</code></div>
+                <div><strong>replaceString:</strong> <pre class="card-editor-pre">{{ rs.replaceString }}</pre></div>
+              </div>
+
+              <!-- Quick Style Panel -->
+              <div v-if="getRegexPanel('editor', ri).showStyle" class="regex-style-panel glass">
+                <h4><svg class="lucide" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><use href="#lucide-palette"/></svg> 快速配色</h4>
+                <!-- Presets -->
+                <div class="regex-preset-row">
+                  <span class="regex-preset-label">预设：</span>
+                  <div class="regex-pill-group">
+                    <span v-for="(_, pName) in regexStylePresets" :key="pName"
+                      class="regex-pill-option" :class="{ selected: getRegexPanel('editor', ri).presetName === pName }"
+                      @click="applyRegexPreset('editor', ri, pName)">
+                      {{ pName }}
+                    </span>
+                  </div>
+                </div>
+                <!-- CSS Variables -->
+                <div class="regex-vars-list" v-if="getRegexPanel('editor', ri).cssVars.length">
+                  <div class="regex-var-row" v-for="(v, vi) in getRegexPanel('editor', ri).cssVars" :key="v.name">
+                    <span class="regex-var-label">{{ v.label }}</span>
+                    <span class="regex-var-swatch" :style="{ background: v.value }"></span>
+                    <input type="text" class="regex-var-input" :value="v.value"
+                      @input="updateRegexCSSVar('editor', ri, vi, $event.target.value)">
+                    <input v-if="v.value.match(/^#[0-9a-fA-F]{3,8}$/) || v.value.match(/^rgb/)" type="color"
+                      class="regex-var-color-picker"
+                      :value="v.value.startsWith('#') ? v.value : ''"
+                      @input="updateRegexCSSVar('editor', ri, vi, $event.target.value)">
+                  </div>
+                </div>
+                <div v-else class="regex-no-vars">未检测到 CSS 自定义属性</div>
+                <div class="regex-style-actions">
+                  <button class="btn btn-primary btn-sm" @click="applyRegexCSSChanges('editor', ri)"><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><use href="#lucide-check-circle"/></svg> 应用</button>
+                  <button class="btn btn-ghost btn-sm" @click="resetRegexCSSChanges('editor', ri)">↩ 重置</button>
+                </div>
+              </div>
+
+              <!-- AI Rewrite Panel -->
+              <div v-if="getRegexPanel('editor', ri).showAI" class="regex-ai-panel glass">
+                <h4><svg class="lucide" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><use href="#lucide-sparkles"/></svg> AI 样式重写</h4>
+                <div class="regex-ai-section">
+                  <label>风格</label>
+                  <div class="regex-pill-group">
+                    <span v-for="s in regexAIStyleOptions" :key="s"
+                      class="regex-pill-option" :class="{ selected: regexCustomize.aiStyles.includes(s) }"
+                      @click="toggleRegexAIOption(regexCustomize.aiStyles, s)">{{ s }}</span>
+                  </div>
+                </div>
+                <div class="regex-ai-section">
+                  <label>配色</label>
+                  <div class="regex-pill-group">
+                    <span v-for="c in regexAIColorOptions" :key="c"
+                      class="regex-pill-option" :class="{ selected: regexCustomize.aiColors.includes(c) }"
+                      @click="toggleRegexAIOption(regexCustomize.aiColors, c)">{{ c }}</span>
+                  </div>
+                </div>
+                <div class="regex-ai-section">
+                  <label>元素</label>
+                  <div class="regex-pill-group">
+                    <span v-for="el in regexAIElementOptions" :key="el"
+                      class="regex-pill-option" :class="{ selected: regexCustomize.aiElements.includes(el) }"
+                      @click="toggleRegexAIOption(regexCustomize.aiElements, el)">{{ el }}</span>
+                  </div>
+                </div>
+                <div class="regex-ai-section">
+                  <label>其他要求</label>
+                  <textarea class="form-control" v-model="regexCustomize.aiCustomRequest"
+                    placeholder="自由描述你想要的效果..." rows="2"></textarea>
+                </div>
+                <div class="regex-ai-actions">
+                  <button class="btn btn-primary btn-sm" @click="startRegexAIRewrite('editor', ri)"
+                    :disabled="regexCustomize.aiGenerating">
+                    <span v-if="regexCustomize.aiGenerating">生成中...</span><span v-else><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><use href="#lucide-zap"/></svg> 生成</span>
+                  </button>
+                </div>
+                <div v-if="regexCustomize.aiGenerating" class="regex-ai-stream">
+                  <pre>{{ regexCustomize.aiStreamOutput }}</pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TavernHelper 脚本区（只读） -->
+        <div class="form-card glass card-editor-section" v-if="editorData.tavernHelperScripts && editorData.tavernHelperScripts.length">
+          <h3>TavernHelper 脚本 ({{ editorData.tavernHelperScripts.length }})</h3>
+          <div class="card-editor-readonly-list">
+            <div class="card-editor-readonly-item" v-for="(ts, ti) in editorData.tavernHelperScripts" :key="ti">
+              <div class="card-editor-readonly-header" @click="ts._expanded = !ts._expanded">
+                <span>{{ (ts.value && ts.value.name) || '未命名脚本' }}</span>
+                <span class="card-editor-collapse-icon">{{ ts._expanded ? '&#9660;' : '&#9654;' }}</span>
+              </div>
+              <div v-if="ts._expanded" class="card-editor-readonly-detail">
+                <pre class="card-editor-pre">{{ ts.value && ts.value.content }}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 封面图区 -->
+        <div class="form-card glass card-editor-section">
+          <h3>封面图</h3>
+          <div class="cover-section">
+            <div class="cover-preview">
+              <img v-if="editorCoverPreview" :src="editorCoverPreview" alt="封面预览">
+              <div v-else class="cover-placeholder">
+                <span>暂无封面</span>
+              </div>
+            </div>
+            <div class="cover-controls">
+              <label class="btn btn-ghost btn-sm">
+                <svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-upload"/></svg> 上传新封面
+                <input type="file" accept="image/png,image/jpeg" @change="uploadEditorCover" hidden>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 操作栏 -->
+        <div class="card-editor-actions glass">
+          <button class="btn btn-ghost" @click="currentView = 'cards'">返回列表</button>
+          <a :href="'/api/cards/' + editingCardId + '/download'" class="btn btn-secondary" download>下载</a>
+          <button class="btn btn-primary" @click="saveEditorCard" :disabled="editorSaving">
+            {{ editorSaving ? '保存中...' : '保存' }}
+          </button>
+        </div>
+      </template>
+    </div>
+
+    <!-- Success Modal -->
+    <div v-if="showSuccessModal" class="modal-overlay" @click.self="showSuccessModal = false">
+      <div class="modal glass">
+        <div class="modal-icon"><svg class="lucide success-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-check-circle"/></svg></div>
+        <h3>角色卡生成成功！</h3>
+        <p>{{ cardForm.name }} 的角色卡已经打包完成</p>
+        <div class="modal-actions" style="flex-wrap:wrap;gap:8px">
+          <a :href="successDownloadUrl" class="btn btn-primary" download><svg class="lucide" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-download"/></svg> 下载角色卡</a>
+          <button class="btn btn-ghost" @click="showSuccessModal = false; createStep = 4"><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><use href="#lucide-sparkles"/></svg> 继续生成开场白</button>
+          <button class="btn btn-ghost" @click="showSuccessModal = false"><svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><use href="#lucide-edit-3"/></svg> 继续编辑</button>
+          <button class="btn btn-ghost" @click="showSuccessModal = false; currentView = 'cards'">查看我的卡片</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast-container">
+      <div v-for="(t, i) in toasts" :key="i" class="toast glass" :class="'toast-' + t.type">
+
+        {{ t.message }}
+      </div>
+    </div>
+
+    <!-- Refine Sidebar Floating Button -->
+    <div v-if="user.loggedIn && (currentView === 'create' || currentView === 'card-editor') && !refineOpen"
+         class="refine-fab" @click="toggleRefine" title="AI 调优助手">
+      <svg class="lucide" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-wand-2"/></svg>
+    </div>
+
+    <!-- Refine Sidebar -->
+    <transition name="refine-slide">
+      <div v-if="refineOpen" class="refine-sidebar glass">
+        <div class="refine-header">
+          <h3><svg class="lucide" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-wand-2"/></svg> AI 助手</h3>
+          <div class="refine-header-actions">
+            <button class="btn btn-sm btn-ghost" @click="clearRefineChat" title="清空对话">
+              <svg class="lucide" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-trash-2"/></svg>
+            </button>
+            <button class="btn btn-sm btn-ghost" @click="refineOpen = false" title="关闭">
+              <svg class="lucide" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-x"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="refine-messages">
+          <div v-for="(msg, idx) in refineMessages" :key="idx"
+               class="refine-msg" :class="'refine-msg-' + msg.role">
+            <div v-if="msg.role === 'assistant'" class="refine-msg-content" v-html="renderRefineMessage(msg.content)"></div>
+            <div v-else class="refine-msg-content">{{ msg.content }}</div>
+          </div>
+          <div v-if="refineSending && (!refineMessages.length || !refineMessages[refineMessages.length - 1]._streaming)"
+               class="refine-msg refine-msg-assistant">
+            <div class="refine-msg-content refine-typing">思考中...</div>
+          </div>
+        </div>
+        <div class="refine-input-area">
+          <textarea v-model="refineInput" class="refine-textarea"
+                    placeholder="描述你想修改的内容..."
+                    @keydown.enter.exact.prevent="sendRefineMessage"
+                    rows="2"></textarea>
+          <button class="btn btn-primary refine-send-btn" @click="sendRefineMessage"
+                  :disabled="refineSending || !refineInput.trim()">
+            <svg class="lucide" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-send"/></svg>
+          </button>
+        </div>
+      </div>
+    </transition>
+
+    <!-- Mobile Bottom Tab Bar -->
+    <nav class="mobile-tab-bar" v-if="user.loggedIn">
+      <a :class="{ active: currentView === 'dashboard' }" @click="currentView = 'dashboard'">
+        <svg class="lucide" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-layout-dashboard"/></svg>
+        <span>仪表盘</span>
+      </a>
+      <a :class="{ active: currentView === 'create' }" @click="resetCreateState(); currentView = 'create'">
+        <svg class="lucide" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-sparkles"/></svg>
+        <span>创建</span>
+      </a>
+      <a :class="{ active: currentView === 'cards' }" @click="currentView = 'cards'">
+        <svg class="lucide" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-book-open"/></svg>
+        <span>卡片</span>
+      </a>
+      <a :class="{ active: currentView === 'settings' }" @click="currentView = 'settings'">
+        <svg class="lucide" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-settings"/></svg>
+        <span>设置</span>
+      </a>
+      <a :class="{ active: currentView === 'agent-chat' }" @click="currentView = 'agent-chat'">
+        <svg class="lucide" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#lucide-message-circle"/></svg>
+        <span>助手</span>
+      </a>
+    </nav>
+  </div>
+
+  <script type="module" src="/js/app.js?v=__APP_VERSION__"></script>
+  <script>
+    // Initialize Lucide icons after Vue has mounted
+</script>
+</body>
+</html>

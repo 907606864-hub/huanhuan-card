@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#667eea"/>
+      <stop offset="100%" stop-color="#764ba2"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#e8e0f0" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+  <!-- 圆角背景 -->
+  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
+  <!-- 卡片 -->
+  <rect x="14" y="10" width="36" height="44" rx="5" fill="url(#card)" stroke="#764ba2" stroke-width="1.5" stroke-opacity="0.3"/>
+  <!-- 卡片上的横线（代表文字） -->
+  <line x1="20" y1="22" x2="44" y2="22" stroke="#764ba2" stroke-width="2" stroke-linecap="round" stroke-opacity="0.4"/>
+  <line x1="20" y1="28" x2="38" y2="28" stroke="#764ba2" stroke-width="2" stroke-linecap="round" stroke-opacity="0.3"/>
+  <line x1="20" y1="34" x2="40" y2="34" stroke="#764ba2" stroke-width="2" stroke-linecap="round" stroke-opacity="0.25"/>
+  <!-- 星星✨ -->
+  <circle cx="48" cy="14" r="3" fill="#ffd700" opacity="0.9"/>
+  <circle cx="52" cy="20" r="2" fill="#ffd700" opacity="0.7"/>
+  <circle cx="12" cy="48" r="2.5" fill="#ffd700" opacity="0.8"/>
+  <!-- 欢 字 -->
+  <text x="32" y="48" text-anchor="middle" font-size="14" font-weight="bold" fill="#764ba2" font-family="sans-serif" opacity="0.7">欢</text>
+</svg>

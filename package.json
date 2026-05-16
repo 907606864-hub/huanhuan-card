@@ -1,0 +1,20 @@
+{
+  "name": "huanhuan-card",
+  "version": "1.0.0",
+  "description": "欢欢卡站 — SillyTavern 角色卡自动创作平台",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.7.0",
+    "connect-sqlite3": "^0.9.15",
+    "express": "^4.21.0",
+    "express-session": "^1.18.1",
+    "pngjs": "^7.0.0",
+    "sharp": "^0.34.5",
+    "uuid": "^10.0.0"
+  }
+}
